@@ -42,7 +42,7 @@ jobs:
         username: develop
         KEY: ${{ secrets.KEY }}
         port: 7872
-        source: "dist/*"
+        source: "dist/admin-example*"
         target: /var/www/html/islamicapp
         rm: true
         strip_components: 1
