@@ -1,0 +1,36 @@
+<!--
+https://coreui.io/docs/components/sidebar/
+-->
+<ul class="c-sidebar-nav">
+    <li class="c-sidebar-nav-title">Admin-Dashboard</li>
+    <li class="c-sidebar-nav-item">
+        <a class="c-sidebar-nav-link" matRipple routerLink="" routerLinkActive="c-active">
+            <!-- core ui icon -->
+            <i class="c-sidebar-nav-icon cil-home"></i> Dashboard
+        </a>
+    </li>
+
+    <li class="c-sidebar-nav-item">
+        <a class="c-sidebar-nav-link" matRipple routerLink="users" routerLinkActive="c-active">
+            <!-- fontawesome icon -->
+            <i class="c-sidebar-nav-icon fa fa-table"></i> Users
+        </a>
+    </li>
+
+    <li class="c-sidebar-nav-item">
+        <a class="c-sidebar-nav-link" matRipple routerLinkActive="c-active" (click)="logout()">
+            <!-- fontawesome icon -->
+            <i class="c-sidebar-nav-icon icon-book-open"></i>  Logout
+        </a>
+    </li>
+
+    <!-- <li class="c-sidebar-nav-item">
+        <a class="c-sidebar-nav-link" routerLinkActive="c-active" matRipple ><i class="c-sidebar-nav-icon icon-book-open"></i> Logout
+        </a>
+    </li> -->
+
+  
+    <!-- allow hosted content -->
+    <ng-content></ng-content>
+</ul>
+
