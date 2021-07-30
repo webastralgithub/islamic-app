@@ -4,8 +4,9 @@
   "scripts": {
     "ng": "ng",
     "gitside": "ng build --prod --base-href /admin-template/",
-    "start": "ng serve",
+    "start": "ng serve", 
     "build": "ng build",
+    "build:prod": "ng build --prod",
     "test": "ng test",
     "ci:test": "ng test --watch=false --browsers=ChromeHeadlessCustom",
     "lint": "ng lint",
