@@ -41,7 +41,7 @@ jobs:
         host: islamic.nvinfobase.com
         username: develop
         KEY: ${{ secrets.KEY }}
-        port: 22
+        port: 7872
         source: "dist/*"
         target: /var/www/html/islamicapp
         rm: true
