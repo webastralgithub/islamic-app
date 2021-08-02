@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './auth/components/login/login.component';
 import { ResetPasswordComponent } from './auth/components/reset-password/reset-password.component';
 import { ResetPinComponent } from './auth/components/reset-pin/reset-pin.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -27,10 +28,7 @@ import { ResetPinComponent } from './auth/components/reset-pin/reset-pin.compone
     ReactiveFormsModule
   ],
   providers: [
-  //   {
-  //   provide: LocationStrategy,
-  //   useClass: HashLocationStrategy
-  // }
+  {provide: LocationStrategy, useClass: HashLocationStrategy}
 ],
   bootstrap: [AppComponent]
 })
