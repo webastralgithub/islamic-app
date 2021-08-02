@@ -33,7 +33,7 @@ jobs:
     - name: Building Angular Files
       run: |
         
-        npm run build
+        npm run build --prod
         
     - name: Copy files to server
       uses: appleboy/scp-action@master
@@ -41,8 +41,8 @@ jobs:
         host: islamic.nvinfobase.com
         username: develop
         KEY: ${{ secrets.KEY }}
-        port: 22
-        source: "dist/*"
+        port: 7872
+        source: "dist/admin-example/*"
         target: /var/www/html/islamicapp
         rm: true
         strip_components: 1
