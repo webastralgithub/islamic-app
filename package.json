@@ -3,12 +3,15 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "gitside": "ng build --prod --base-href /admin-template/",
     "start": "ng serve",
     "build": "ng build",
-    "build:prod": "ng build --prod",
     "test": "ng test",
+    "ci:test": "ng test --watch=false --browsers=ChromeHeadlessCustom",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:ci": "npm ci && npm run ci:test && npm run gitside",
+    "postinstall": "ngcc"
   },
   "private": true,
   "dependencies": {
@@ -42,7 +45,7 @@
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.1.0",
-    "karma-chrome-launcher": "~3.1.0","build:ci": "npm ci && npm run ci:test && npm run gitside",
+    "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
