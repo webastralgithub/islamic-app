@@ -72,6 +72,24 @@ export class HomeComponent implements OnInit {
     )
       
   }
+
+  changeStatus = (status:boolean,id:string) =>{
+    this.authService.changeUserStatus(status,id)
+    .pipe(first())
+    .subscribe(
+      data =>{
+
+        this.success = 'User status changed Successfully';
+        // this.getUser();
+
+        
+      },
+      error =>{
+        this.error = error.error.msg;
+        
+      }
+    )
+  }
 }
 
 

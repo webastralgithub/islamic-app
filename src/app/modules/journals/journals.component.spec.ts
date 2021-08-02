@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResetPinComponent } from './reset-pin.component';
+import { JournalsComponent } from './journals.component';
 
-describe('ResetPinComponent', () => {
-  let component: ResetPinComponent;
-  let fixture: ComponentFixture<ResetPinComponent>;
+describe('JournalsComponent', () => {
+  let component: JournalsComponent;
+  let fixture: ComponentFixture<JournalsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ResetPinComponent ]
+      declarations: [ JournalsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ResetPinComponent);
+    fixture = TestBed.createComponent(JournalsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

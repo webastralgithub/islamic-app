@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './auth/components/login/login.component';
 import { ResetPasswordComponent } from './auth/components/reset-password/reset-password.component';
 import { ResetPinComponent } from './auth/components/reset-pin/reset-pin.component';
+import { ViewUserComponent } from './auth/components/view-user/view-user.component';
+
 
 
 const routes: Routes = [
@@ -13,6 +15,7 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
   {path: 'reset', component: ResetPasswordComponent},
   {path: 'reset-pin', component: ResetPinComponent},
+  {path: 'view-user', component: ViewUserComponent},
 
   // {
   //   path: '**', loadChildren: ()

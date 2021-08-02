@@ -9,13 +9,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './auth/components/login/login.component';
 import { ResetPasswordComponent } from './auth/components/reset-password/reset-password.component';
 import { ResetPinComponent } from './auth/components/reset-pin/reset-pin.component';
+import { JournalsComponent } from './modules/journals/journals.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ResetPasswordComponent,
-    ResetPinComponent
+    ResetPinComponent,
+    JournalsComponent
   ],
   imports: [
     BrowserModule,

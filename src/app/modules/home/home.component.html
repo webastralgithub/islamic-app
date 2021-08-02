@@ -18,18 +18,18 @@
         <td><section class="section-preview">
 
             <div class="custom-control custom-switch" *ngIf="!user.status">
-              <input type="checkbox" class="custom-control-input" id="customSwitches{{i+1}}">
+              <input type="checkbox" class="custom-control-input" id="customSwitches{{i+1}}" (click) = "changeStatus(user.status,user._id)">
               <label class="custom-control-label" for="customSwitches{{i+1}}"></label>
             </div>
     
             <div class="custom-control custom-switch"  *ngIf="user.status != false">
-              <input type="checkbox" class="custom-control-input" id="customSwitches{{i+1}}" checked="">
+              <input type="checkbox" class="custom-control-input" id="customSwitches{{i+1}}" checked="" (click) = "changeStatus(user.status,user._id)">
               <label class="custom-control-label" for="customSwitches{{i+1}}"></label>
             </div>
     
           </section>
         </td>
-        <td><button class="btn btn-danger" (click)= "deleteUser(user._id)">Delete {{user.status}}</button></td>
+        <td><button class="btn btn-danger" (click)= "deleteUser(user._id)"><i class="fa fa-fw fa-trash"></i></button> <a [routerLink]="[ '/dashboard/userProfile',user._id]" class="btn btn-info ml-1"><i class="fa fa-fw fa-user"></i></a></td>
       </tr>
     
     </tbody>

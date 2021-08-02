@@ -116,4 +116,16 @@ this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
         return user;
       }));
   }
+
+  viewProfile(id:any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/xml',
+        'auth-token':this.currentUser.auth_token
+      })
+    };
+    const endPoint = environment.apiURL + "admin/viewuser/"+id;
+    const response = this.http.get<any>(endPoint,httpOptions);
+    return response;
+  }
 }
