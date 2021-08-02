@@ -10,6 +10,8 @@ import { LoginComponent } from './auth/components/login/login.component';
 import { ResetPasswordComponent } from './auth/components/reset-password/reset-password.component';
 import { ResetPinComponent } from './auth/components/reset-pin/reset-pin.component';
 import { JournalsComponent } from './modules/journals/journals.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -29,10 +31,7 @@ import { JournalsComponent } from './modules/journals/journals.component';
     ReactiveFormsModule
   ],
   providers: [
-  //   {
-  //   provide: LocationStrategy,
-  //   useClass: HashLocationStrategy
-  // }
+  {provide: LocationStrategy, useClass: HashLocationStrategy}
 ],
   bootstrap: [AppComponent]
 })
