@@ -1,0 +1,55 @@
+<div class="container bootstrap snippets bootdey">
+    <h1 class="text-primary"><span class="glyphicon glyphicon-user"></span>Create Book</h1>
+      <hr>
+	<div class="row">
+      <!-- left column -->
+      <div class="col-md-3">
+        <img [src]="imageSrc" *ngIf="imageSrc" style="height: 100px; width:100px">
+        <h6 *ngIf="imageSrc">Upload a different photo...</h6>
+      </div>
+      
+      <div class="col-md-9 personal-info">
+        <!-- <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a> 
+          <i class="fa fa-coffee"></i>
+          This is an <strong>.alert</strong>. Use this to show important messages to the user.
+        </div> -->
+        <!-- <h3>Book info</h3> -->
+        
+        <form class="form-horizontal" [formGroup]="form" (ngSubmit)="submitForm()" role="form">
+          
+            <div class="form-group">
+            <div class="col-md-4 mb-2"> 
+              <!-- <label class="col-lg-3 control-label">Book Image</label> -->
+              <input type="file" (change)="uploadFile($event)">
+            </div>
+            <label class="col-lg-3 control-label">Book Title</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" placeholder="Enter Book Title" formControlName="title">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Description:</label>
+            <div class="col-lg-8">
+                <kendo-editor
+                [value]="value"
+                (valueChange)="valueChange($event)"
+                style="height: 400px;"
+                formControlName="description"
+              ></kendo-editor>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Author:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" formControlName="author" placeholder="Enter Book Author">
+            </div>
+          </div>
+          <button class="btn btn-danger btn-block">
+            Create Book
+        </button>
+        </form>
+      </div>
+  </div>
+</div>
+<hr>

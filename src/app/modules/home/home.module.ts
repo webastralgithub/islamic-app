@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 const homeRoutes: Routes = [
   { path: '', component: HomeComponent }
 ]
@@ -17,6 +17,8 @@ const homeRoutes: Routes = [
     MatPaginatorModule,
     MatTableModule,
     MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(homeRoutes)
   ]
 })

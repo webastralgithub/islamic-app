@@ -1,17 +1,9 @@
 import { Injectable } from '@angular/core';
-
-//Import HttpClient
-// import {HttpClient} from '@angular/common/http';
-
-//Import Observables and Behaviour Subject
 import {Observable, BehaviorSubject} from 'rxjs';
 import { HttpHeaders,HttpClient } from "@angular/common/http";
-//Import Map
 import {map} from 'rxjs/operators';
-
-//Import API URL
 import {environment} from '../../environments/environment';
-
+  
 @Injectable({
   providedIn: 'root'
 })
@@ -63,7 +55,6 @@ this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
   }
 
   getUsers(): Observable<any> {
-    // console.log(this.currentUser.auth_token);
     
     const httpOptions = {
       headers: new HttpHeaders({

@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
  	apiURL: "http://112.196.64.119:8000/api/",
+ 	imgURL: "http://112.196.64.119:8000/",
 };
 
 

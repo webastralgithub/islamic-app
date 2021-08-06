@@ -17,8 +17,8 @@ import { User } from 'src/app/models/user'
 export class HomeComponent implements OnInit {
 
   error:any;
-  users:User[];
-  success:string;
+  users!: User[];
+  success!:string;
 
 
   constructor(

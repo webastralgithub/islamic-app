@@ -6,6 +6,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SharedModule } from '../shared/shared.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { EditorModule } from '@progress/kendo-angular-editor';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
   imports: [
     CommonModule,
     LayoutRoutingModule,
-    SharedModule
+    SharedModule,
+    EditorModule
   ]
 })
 export class LayoutModule { }

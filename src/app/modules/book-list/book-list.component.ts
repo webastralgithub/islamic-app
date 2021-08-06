@@ -1,0 +1,73 @@
+import { Component, OnInit } from '@angular/core';
+
+//Import Router
+import {Router, ActivatedRoute} from '@angular/router';
+
+import { AuthService } from 'src/app/services/auth.service';
+
+
+
+import {first} from 'rxjs/operators';
+import { BooksService } from 'src/app/services/books.service';
+import { environment } from 'src/environments/environment';
+
+@Component({
+  selector: 'app-book-list',
+  templateUrl: './book-list.component.html',
+  styleUrls: ['./book-list.component.scss']
+})
+export class BookListComponent implements OnInit {
+
+  books:any;
+  error:any;
+  success:any;
+  ImgUrl=environment.imgURL+'books/';
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private bookService: BooksService
+   
+  ) { this.getBooks(); }
+
+  ngOnInit(): void {
+  }
+
+  getBooks = () =>{
+    this.bookService.bookList()
+    .pipe(first())
+    .subscribe(
+      book =>{
+        console.log(book.data);
+        this.books = book.data;
+      },
+      error =>{
+        this.error = error.error.msg;
+        
+      }
+    )
+
+  }
+
+ 
+  deleteBook(id:string){
+    this.bookService.deleteBook(id)
+    .pipe(first())
+    .subscribe(
+      data =>{
+
+        this.success = 'Book Deleted Successfully';
+        this.getBooks();
+
+        
+      },
+      error =>{
+        this.error = error.error.msg;
+        
+      }
+    )
+    
+  }
+
+
+
+}
