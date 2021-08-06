@@ -11,6 +11,10 @@ import { ResetPasswordComponent } from './auth/components/reset-password/reset-p
 import { ResetPinComponent } from './auth/components/reset-pin/reset-pin.component';
 import { JournalsComponent } from './modules/journals/journals.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { BookListComponent } from './modules/book-list/book-list.component';
+import { BookCreateComponent } from './modules/book-list/book-create/book-create.component';
+import { EditBookComponent } from './modules/book-list/edit-book/edit-book.component';
+import { EditorModule } from '@progress/kendo-angular-editor';
 
 
 @NgModule({
@@ -19,7 +23,10 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     LoginComponent,
     ResetPasswordComponent,
     ResetPinComponent,
-    JournalsComponent
+    JournalsComponent,
+    BookListComponent,
+    BookCreateComponent,
+    EditBookComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,11 +35,10 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     SharedModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    EditorModule
   ],
-  providers: [
-  {provide: LocationStrategy, useClass: HashLocationStrategy}
-],
+ providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
