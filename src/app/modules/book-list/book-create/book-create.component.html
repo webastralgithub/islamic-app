@@ -21,11 +21,17 @@
             <div class="form-group">
             <div class="col-md-4 mb-2"> 
               <!-- <label class="col-lg-3 control-label">Book Image</label> -->
-              <input type="file" (change)="uploadFile($event)">
+              <input type="file" (change)="uploadFile($event)" [ngClass]="{ 'is-invalid': f.image.errors }">
+              <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
+                <div *ngIf="f.image.errors.required">Image is required</div>
+            </div>
             </div>
             <label class="col-lg-3 control-label">Book Title</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" placeholder="Enter Book Title" formControlName="title">
+              <input class="form-control" type="text" placeholder="Enter Book Title" formControlName="title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" formControlName="title" ngModel [title]="true">
+              <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                <div *ngIf="f.title.errors.required">Title is required</div>
+            </div>
             </div>
           </div>
           <div class="form-group">
@@ -36,14 +42,18 @@
                 (valueChange)="valueChange($event)"
                 style="height: 400px;"
                 formControlName="description"
+                [ngClass]="{ 'is-invalid': f.description.errors }"
               ></kendo-editor>
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Author:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" formControlName="author" placeholder="Enter Book Author">
+              <input class="form-control" type="text" formControlName="author" placeholder="Enter Book Author"  [ngClass]="{ 'is-invalid': submitted && f.author.errors }">
             </div>
+            <div *ngIf="submitted && f.author.errors" class="invalid-feedback">
+              <div *ngIf="f.author.errors.required">Author is required</div>
+          </div>
           </div>
           <button class="btn btn-danger btn-block">
             Create Book

@@ -16,16 +16,20 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class BookCreateComponent implements OnInit {
   imageSrc!: string;
-//   createBook = new FormGroup({
+  form: FormGroup;
 
-//     title: new FormControl('', [Validators.required, Validators.minLength(3)]),
-//     description: new FormControl('', [Validators.required]),
-//     author: new FormControl('', [Validators.required]),
-//     file: new FormControl('', [Validators.required]),
-//     image: new FormControl('', [Validators.required])
-
-// });
-  // constructor(private bookService: BooksService) {}
+  fileData:any;
+  currentUser:any
+    constructor(public fb: FormBuilder,private bookService: BooksService, private http: HttpClient,private router:Router) {
+      this.form = this.fb.group({
+        title: ['', Validators.required],
+        description: ['', Validators.required],
+        author: ['', Validators.required],
+        image: ['', Validators.required]
+      });
+   
+  this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    }
   loading = false;
   submitted = false;
   returnUrl!: string;
@@ -33,7 +37,8 @@ export class BookCreateComponent implements OnInit {
   success!: string;
   public events: string[] = [];
   public value = ``;
-
+  
+  ngOnInit() { }
   public valueChange(value: any): void {
     this.log("valueChange", value);
   }
@@ -43,8 +48,37 @@ export class BookCreateComponent implements OnInit {
     console.log(this.events);
     
   }
+  uploadFile(event:any) {
+    const reader = new FileReader();
+    const file = event.target.files[0];
+    // console.log(file);
+    reader.readAsDataURL(file);
+    
+    reader.onload = () => {
+ 
+      this.imageSrc = reader.result as string;
+      // console.log(file.name);
+    
+    this.form.patchValue({
+      image: file,
+      fileData: file,
+    });
+    this.form.get('image')!.updateValueAndValidity();
+  }
 
+}
+get f(){ return this.form.controls;}
     submitForm =() => {
+      
+      console.log(this.form.status);
+      this.submitted = true;
+      if(this.form.status == 'INVALID'){
+        console.log(this.form.value);
+        
+        return;
+      }
+      // return 'heyy';
+      
       var formData: any = new FormData();
       formData.append("title", this.form.value.title);
       formData.append("image", this.form.get('image')!.value);
@@ -64,45 +98,6 @@ export class BookCreateComponent implements OnInit {
         }
       );
     }
-  
 
-form: FormGroup;
 
-fileData:any;
-currentUser:any
-  constructor(public fb: FormBuilder,private bookService: BooksService, private http: HttpClient,private router:Router) {
-    this.form = this.fb.group({
-      title: ['', Validators.required],
-      description: ['', Validators.required],
-      author: ['', Validators.required],
-      file: ['', Validators.required],
-      image: ['', Validators.required]
-    });
- 
-this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
-  }
-
-  ngOnInit() { }
-
-  uploadFile(event:any) {
-    const reader = new FileReader();
-    const file = event.target.files[0];
-    // console.log(file);
-    reader.readAsDataURL(file);
-    
-    reader.onload = () => {
- 
-      this.imageSrc = reader.result as string;
-      // console.log(file.name);
-    
-    this.form.patchValue({
-      image: file,
-      fileData: file,
-    });
-    this.form.get('image')!.updateValueAndValidity();
-  }
-
- 
-
-}
 }
