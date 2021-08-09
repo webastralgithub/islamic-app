@@ -50,6 +50,10 @@ export class BookListComponent implements OnInit {
 
  
   deleteBook(id:string){
+    var status = confirm("Do You want to delete this book ?");
+    if(!status){
+      return;
+    }
     this.bookService.deleteBook(id)
     .pipe(first())
     .subscribe(

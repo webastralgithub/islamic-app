@@ -55,6 +55,10 @@ export class HomeComponent implements OnInit {
 
   }
   deleteUser = (id:string) => {
+    var status = confirm("Do you want to delete this user ?");
+    if(!status){
+      return;
+    }
     this.authService.deleteUser(id)
     .pipe(first())
     .subscribe(
