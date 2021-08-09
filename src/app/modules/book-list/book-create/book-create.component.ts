@@ -34,7 +34,7 @@ export class BookCreateComponent implements OnInit {
   submitted = false;
   returnUrl!: string;
   error!: string;
-  success!: string;
+  success: boolean =false;
   public events: string[] = [];
   public value = ``;
   
@@ -88,7 +88,8 @@ get f(){ return this.form.controls;}
       .subscribe(
         data =>{
   
-          console.log(data);
+          // console.log(data);
+          this.success =true;
           this.router.navigate(['dashboard/books']);
           
         },

@@ -15,7 +15,7 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private route:Router,private _Activatedroute:ActivatedRoute,private authService:AuthService) { }
 
-user:User;  
+  user!: User;  
   ngOnInit() {
 
     this._Activatedroute.paramMap.subscribe(params => { 

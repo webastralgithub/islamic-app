@@ -54,4 +54,26 @@ currentUser:any;
     return response;
   }
 
+  editBook(id:any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/xml',
+        'auth-token':this.currentUser.auth_token
+      })
+    };
+    const endPoint = environment.apiURL + "admin/book/view/"+id;
+    const response = this.http.get<any>(endPoint,httpOptions);
+    return response;
+  }
+  updateBook(data:any,id:any){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/xml',
+        'auth-token':this.currentUser.auth_token
+      })
+    };
+    const endPoint = environment.apiURL + 'admin/book/update/'+id;
+    const response =  this.http.post<any>(endPoint, data);
+    return response;
+  }
 }
