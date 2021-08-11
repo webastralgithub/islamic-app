@@ -10,7 +10,8 @@ import { ResetPinComponent } from './components/reset-pin/reset-pin.component';
 
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, ResetPasswordComponent, ResetPinComponent],
+  declarations: [],
+  // declarations: [LoginComponent, RegisterComponent, ResetPasswordComponent, ResetPinComponent],
   imports: [
     CommonModule,
     AuthRoutingModule

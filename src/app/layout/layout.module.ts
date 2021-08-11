@@ -7,6 +7,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { SharedModule } from '../shared/shared.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { EditorModule } from '@progress/kendo-angular-editor';
+import { AuthGuard } from '../guard';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { EditorModule } from '@progress/kendo-angular-editor';
     LayoutRoutingModule,
     SharedModule,
     EditorModule
-  ]
+  ],
+  providers:[[AuthGuard]]
 })
 export class LayoutModule { }

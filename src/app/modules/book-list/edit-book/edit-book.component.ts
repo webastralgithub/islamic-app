@@ -86,26 +86,24 @@ export class EditBookComponent implements OnInit {
 }
 get f(){ return this.edit_book_form.controls;}
     submitForm =() => {
-      this.success=true;
-      console.log(this.edit_book_form.status);
       this.submitted = true;
       if(this.edit_book_form.status == 'INVALID'){
-        console.log(this.edit_book_form.value);
         
         return;
       }
-      // return 'heyy';
-      
+      console.log(this.edit_book_form.get('image')!.value);
       var formData: any = new FormData();
       formData.append("title", this.edit_book_form.value.title);
       formData.append("image", this.edit_book_form.get('image')!.value);
       formData.append("description", this.edit_book_form.value.description);
       formData.append("author", this.edit_book_form.value.author);
+      console.log(formData);
       this.bookService.updateBook(formData,this.bookid).pipe(first())
       .subscribe(
         data =>{
   
           console.log(data);
+          this.success=true;
           this.router.navigate(['dashboard/books']);
           
         },

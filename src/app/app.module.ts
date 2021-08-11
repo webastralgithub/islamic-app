@@ -15,6 +15,9 @@ import { BookListComponent } from './modules/book-list/book-list.component';
 import { BookCreateComponent } from './modules/book-list/book-create/book-create.component';
 import { EditBookComponent } from './modules/book-list/edit-book/edit-book.component';
 import { EditorModule } from '@progress/kendo-angular-editor';
+import { AuthGuard } from './guard';
+import { PageNotfoundComponent } from './modules/page-notfound/page-notfound.component';
+import { AdminEditProfileComponent } from './modules/admin-edit-profile/admin-edit-profile.component';
 
 
 @NgModule({
@@ -27,6 +30,8 @@ import { EditorModule } from '@progress/kendo-angular-editor';
     BookListComponent,
     BookCreateComponent,
     EditBookComponent,
+    PageNotfoundComponent,
+    AdminEditProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,7 @@ import { EditorModule } from '@progress/kendo-angular-editor';
     ReactiveFormsModule,
     EditorModule
   ],
- providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+ providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},[AuthGuard]],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -73,7 +73,7 @@ currentUser:any;
       })
     };
     const endPoint = environment.apiURL + 'admin/book/update/'+id;
-    const response =  this.http.post<any>(endPoint, data);
+    const response =  this.http.patch<any>(endPoint, data);
     return response;
   }
 }

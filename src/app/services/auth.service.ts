@@ -11,15 +11,15 @@ export class AuthService {
 
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: any;
+  public adminId!:string;
 
 
   constructor(private http: HttpClient) { 
 const token:any = localStorage.getItem('currentUser'); 
     this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(token));
     this.currentUser = this.currentUserSubject.asObservable();
-console.log(this.currentUser);
 this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
-
+// this.getCurrentUser();
   }
 
   public get currentUserValue(){
@@ -39,11 +39,28 @@ this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
       }));
   }
 
-  resetPassword(new_password:string, confirm_password:string){
-    const endPoint = environment.apiURL + 'user/reset/60f80396a4f7811c8dad57c7';
+
+  getCurrentUser(){
+      
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/xml',
+        'auth-token':this.currentUser.auth_token
+      })
+    };
+    const endPoint = environment.apiURL + 'user/me';
+    return this.http.post<any>(endPoint,null,httpOptions)
+      .pipe(map(user=>{
+
+        this.adminId = user._id;
+        
+      }));
+  }
+
+  resetPassword(new_password:string, confirm_password:string,user_id:string){
+    const endPoint = environment.apiURL + 'user/reset/'+user_id;
     return this.http.patch<any>(endPoint, {new_password, confirm_password})
       .pipe(map(user=>{
-        console.log(user);
         return user;
       }));
   }
@@ -99,11 +116,10 @@ this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
   }
 
 
-  resetPin(new_token:string, confirm_token:string){
-    const endPoint = environment.apiURL + 'user/resetPin/60f80396a4f7811c8dad57c7';
+  resetPin(new_token:string, confirm_token:string,user_id:string){
+    const endPoint = environment.apiURL + 'user/resetPin/'+user_id;
     return this.http.patch<any>(endPoint, {new_token, confirm_token})
       .pipe(map(user=>{
-        console.log(user);
         return user;
       }));
   }

@@ -19,8 +19,6 @@ export class HomeComponent implements OnInit {
   error:any;
   users!: User[];
   success!:string;
-
-
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -29,31 +27,36 @@ export class HomeComponent implements OnInit {
   ) {
 
     this.getUser();
+
+    this.authService.getCurrentUser()
+    .pipe(first())
+    .subscribe(
+      data =>{
+        console.log(data);
+        
+      },
+      error =>{
+       console.log(error);
+             
+      }
+    )
   }
 
-  ngOnInit() {
-   
-    
-  }
+  ngOnInit() {}
 
   getUser = () =>{
     this.authService.getUsers()
     .pipe(first())
     .subscribe(
       users =>{
-
-        console.log(users.data);
         this.users = users.data;
-        
-        
       },
       error =>{
-        this.error = error.error.msg;
-        
+        this.error = error.error.msg;        
       }
     )
-
   }
+
   deleteUser = (id:string) => {
     var status = confirm("Do you want to delete this user ?");
     if(!status){
@@ -63,18 +66,13 @@ export class HomeComponent implements OnInit {
     .pipe(first())
     .subscribe(
       data =>{
-
         this.success = 'User Deleted Successfully';
-        this.getUser();
-
-        
+        this.getUser();        
       },
       error =>{
-        this.error = error.error.msg;
-        
+        this.error = error.error.msg;        
       }
-    )
-      
+    )      
   }
 
   changeStatus = (status:boolean,id:string) =>{
@@ -82,15 +80,10 @@ export class HomeComponent implements OnInit {
     .pipe(first())
     .subscribe(
       data =>{
-
         this.success = 'User status changed Successfully';
-        // this.getUser();
-
-        
       },
       error =>{
-        this.error = error.error.msg;
-        
+        this.error = error.error.msg;        
       }
     )
   }

@@ -5,6 +5,7 @@ import {first} from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 
 import { User } from 'src/app/models/user'
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-user-profile',
@@ -12,6 +13,8 @@ import { User } from 'src/app/models/user'
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
+
+ImgUrl=environment.imgURL+'users/';
 
   constructor(private route:Router,private _Activatedroute:ActivatedRoute,private authService:AuthService) { }
 
@@ -27,5 +30,5 @@ export class UserProfileComponent implements OnInit {
   });
 });
    }
-
+ 
 }

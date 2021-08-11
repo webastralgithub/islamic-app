@@ -1,3 +1,5 @@
+<h1 class="text-info mb-2 mt-2 ml-2"><span class="glyphicon glyphicon-user"></span>Journal List</h1>
+    <hr>
 <table class="table table-hover">
     <thead>
       <tr>
@@ -11,7 +13,7 @@
       <tr *ngFor="let journal of journals; index as i;">
         <th scope="row">{{i+1}}</th>
         <td>{{journal.title | titlecase }}</td>
-        <td>{{journal.description}}</td>
+        <td>{{ (journal.description.length>50)? (journal.description | slice:0:50)+'....':(journal.description) }}</td>
        
         <td><button class="btn btn-danger" (click)= "deleteJournal(journal._id)"><i class="fa fa-fw fa-trash"></i></button></td>
       </tr>

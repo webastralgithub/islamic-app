@@ -28,6 +28,7 @@ export class ResetPasswordComponent implements OnInit {
   reset_returnUrl!: string;
   reset_error!: string;
   reset_success!: string;
+  user_id!:string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -51,6 +52,33 @@ export class ResetPasswordComponent implements OnInit {
       confirm_password: ['', Validators.required]
     });
 
+    this.route.queryParams.subscribe(params=>{
+      if(params['token'] && params['id']){
+        this.user_id = params['id'];
+        console.log(params['token'],params['id']);
+        this.authService.checkResetToken(params['id'],params['token']).pipe(first())
+        .subscribe(
+          data =>{
+        //  this.reset_loading = true;
+        console.log(data);
+        
+    
+            if(data === false){
+              this.router.navigate(['']);
+            }
+            
+            
+          },
+          error =>{
+            console.log(error);
+            
+            
+          }
+        )
+        
+      }
+    })
+
   }
 
 
@@ -71,24 +99,25 @@ export class ResetPasswordComponent implements OnInit {
     //stop here if the form is invalid
     if(this.resetform.invalid){
      alert('error')
+     return;
     }
 
 
-    this.authService.resetPassword(this.f.new_password.value, this.f.confirm_password.value)
+    this.authService.resetPassword(this.f.new_password.value, this.f.confirm_password.value,this.user_id)
     .pipe(first())
     .subscribe(
       data =>{
      this.reset_loading = true;
-
-        // this.router.navigateByUrl('/');
-        // window.location.reload();
-        // this.reset_success = 'Login successfully';
+     this.router.navigate(['']);
         console.log(data);
         
         
       },
       error =>{
         this.reset_error = error.error.msg;
+
+        // console.log(error);
+        
         
       }
     )

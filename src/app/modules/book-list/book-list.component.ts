@@ -1,12 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-//Import Router
 import {Router, ActivatedRoute} from '@angular/router';
-
-import { AuthService } from 'src/app/services/auth.service';
-
-
-
 import {first} from 'rxjs/operators';
 import { BooksService } from 'src/app/services/books.service';
 import { environment } from 'src/environments/environment';
@@ -37,7 +30,6 @@ export class BookListComponent implements OnInit {
     .pipe(first())
     .subscribe(
       book =>{
-        console.log(book.data);
         this.books = book.data;
       },
       error =>{
@@ -47,8 +39,6 @@ export class BookListComponent implements OnInit {
     )
 
   }
-
- 
   deleteBook(id:string){
     var status = confirm("Do You want to delete this book ?");
     if(!status){
@@ -58,11 +48,8 @@ export class BookListComponent implements OnInit {
     .pipe(first())
     .subscribe(
       data =>{
-
         this.success = 'Book Deleted Successfully';
         this.getBooks();
-
-        
       },
       error =>{
         this.error = error.error.msg;

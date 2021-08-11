@@ -29,6 +29,7 @@ export class ResetPinComponent implements OnInit {
   reset_returnUrl!: string;
   reset_error!: string;
   reset_success!: string;
+  user_id!:string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -54,6 +55,7 @@ export class ResetPinComponent implements OnInit {
 
     this.route.queryParams.subscribe(params=>{
       if(params['token'] && params['id']){
+        this.user_id = params['id'];
         console.log(params['token'],params['id']);
         this.authService.checkResetToken(params['id'],params['token']).pipe(first())
         .subscribe(
@@ -102,7 +104,7 @@ export class ResetPinComponent implements OnInit {
     }
 
 
-    this.authService.resetPin(this.f.new_pin.value, this.f.confirm_pin.value)
+    this.authService.resetPin(this.f.new_pin.value, this.f.confirm_pin.value,this.user_id)
     .pipe(first())
     .subscribe(
       data =>{
