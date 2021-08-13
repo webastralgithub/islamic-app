@@ -27,19 +27,6 @@ export class HomeComponent implements OnInit {
   ) {
 
     this.getUser();
-
-    this.authService.getCurrentUser()
-    .pipe(first())
-    .subscribe(
-      data =>{
-        console.log(data);
-        
-      },
-      error =>{
-       console.log(error);
-             
-      }
-    )
   }
 
   ngOnInit() {}

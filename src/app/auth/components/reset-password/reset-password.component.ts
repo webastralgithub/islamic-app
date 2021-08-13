@@ -36,14 +36,7 @@ export class ResetPasswordComponent implements OnInit {
     private router: Router,
     private authService: AuthService
    
-  ) { 
-
-    //redirect to home if already logged in
-    // if(this.authService.currentUserValue){
-    //   this.router.navigate(['dashboard']);
-    // }
-
-  }
+  ) {}
 
   ngOnInit() {
 
@@ -67,12 +60,9 @@ export class ResetPasswordComponent implements OnInit {
               this.router.navigate(['']);
             }
             
-            
           },
           error =>{
             console.log(error);
-            
-            
           }
         )
         
@@ -81,17 +71,14 @@ export class ResetPasswordComponent implements OnInit {
 
   }
 
-
   //convinience getter for easy access to form fields
   get f(){ return this.resetform.controls;}
 
   onSubmit(){
-    // alert('heyyy');
+
     this.reset_submitted = true;
     console.log(this.resetform.controls);
-    // return false;
    
-
     // reset alerts on submit
     this.reset_error = '';
     this.reset_success = '';
@@ -102,7 +89,6 @@ export class ResetPasswordComponent implements OnInit {
      return;
     }
 
-
     this.authService.resetPassword(this.f.new_password.value, this.f.confirm_password.value,this.user_id)
     .pipe(first())
     .subscribe(
@@ -110,15 +96,9 @@ export class ResetPasswordComponent implements OnInit {
      this.reset_loading = true;
      this.router.navigate(['']);
         console.log(data);
-        
-        
       },
       error =>{
         this.reset_error = error.error.msg;
-
-        // console.log(error);
-        
-        
       }
     )
   }

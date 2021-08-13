@@ -18,7 +18,7 @@
         <td [innerHTML]="book.description"></td>
         <td>{{book.author}}</td>
        
-        <td><button class="btn btn-danger" (click)= "deleteBook(book._id)"><i class="fa fa-fw fa-trash"></i></button>
+        <td><a [routerLink]="[ '/dashboard/chapter-list',book._id]" class="btn btn-info"><i class="fa fa-fw fa-eye"></i></a> <button class="btn btn-danger ml-1" (click)= "deleteBook(book._id)"><i class="fa fa-fw fa-trash"></i></button>
         <a [routerLink]="[ '/dashboard/editBook',book._id]" class="btn btn-info ml-1"><i class="fa fa-fw fa-edit"></i></a></td>
       </tr>
     

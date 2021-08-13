@@ -51,7 +51,7 @@ export class BookCreateComponent implements OnInit {
   uploadFile(event:any) {
     const reader = new FileReader();
     const file = event.target.files[0];
-    // console.log(file);
+    // console.log(event.target.files);
     reader.readAsDataURL(file);
     
     reader.onload = () => {

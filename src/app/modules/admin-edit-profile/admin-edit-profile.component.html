@@ -2,15 +2,15 @@
     <!-- Top navbar -->
   
     <!-- Header -->
-    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(https://raw.githack.com/creativetimofficial/argon-dashboard/master/assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url({{profile_image}}/{{user?.profile_image}}); background-size: cover; background-position: center top;">
       <!-- Mask -->
       <span class="mask opacity-8"></span>
       <!-- Header container -->
       <div class="container-fluid d-flex align-items-center">
         <div class="row">
           <div class="col-lg-12 col-md-12">
-            <h1 class="display-2 text-danger">Hello Jesse</h1>
-            <a href="#!" class="btn btn-info">Edit profile</a>
+            <h1 class="display-2 text-white">Hello, {{user?.name}}</h1>
+            <!-- <a href="#!" class="btn btn-info">Edit profile</a> -->
           </div>
         </div>
       </div>
@@ -23,10 +23,24 @@
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
-                  <a href="#">
-                    <img src="https://demos.creative-tim.com/argon-dashboard/assets/img/theme/team-4.jpg" class="rounded-circle">
-                  </a>
-                </div>
+                  <img src="{{profile_image}}/{{user?.profile_image}}" *ngIf="!imageSrc" class="rounded-circle">
+                  <img [src]="imageSrc" *ngIf="imageSrc" class="rounded-circle">
+                  <div class="add-icon-edit-profilt">
+                    <div class="edit-file">
+                      <form enctype="multipart/form-data" [formGroup]="uploadImage">
+                        <input type="file" (change)="uploadFile($event)" name="file"/>
+                      </form>
+                      <!-- <input #imageInput
+         type="file"
+         accept="image/*"
+         (change)="processFile(imageInput)"> -->
+                       
+                    </div>
+                    <div class="pen-icon">
+                      <i class="fa fa-edit"></i>
+                    </div>
+                  </div>               
+                </div>                
               </div>
             </div>
             <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
@@ -56,20 +70,20 @@
               </div>
               <div class="text-center">
                 <h3>
-                  Jessica Jones<span class="font-weight-light">, 27</span>
+                  {{user?.name}}<span class="font-weight-light">, 27</span>
                 </h3>
                 <div class="h5 font-weight-300">
                   <i class="ni location_pin mr-2"></i>Bucharest, Romania
                 </div>
                 <div class="h5 mt-4">
-                  <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
+                  <i class="ni business_briefcase-24 mr-2"></i>Full Stack Developer
                 </div>
                 <div>
                   <i class="ni education_hat mr-2"></i>University of Computer Science
                 </div>
                 <hr class="my-4">
                 <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p>
-                <a href="#">Show more</a>
+                <!-- <a href="#">Show more</a> -->
               </div>
             </div>
           </div>
@@ -80,48 +94,52 @@
               <div class="row align-items-center">
                 <div class="col-8">
                   <h3 class="mb-0">My account</h3>
-                </div>
+             </div>
                 <div class="col-4 text-right">
-                  <!-- <a href="#!" class="btn btn-sm btn-primary">Settings</a> -->
+                  <!-- <a href="#!" class="btn btn-sm btn-primary">Settings</a> --> 
                 </div>
               </div>
             </div>
             <div class="card-body">
-              <form>
+              <form [formGroup]="editAdmin" (ngSubmit)="updateUser()">
                 <h6 class="heading-small text-muted mb-4">User information</h6>
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group focused">
-                        <label class="form-control-label" for="input-username">Username</label>
-                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="lucky.jesse">
+                        <label class="form-control-label" for="input-username">Name</label>
+                        <input type="text" id="input-username" formControlName="name" class="form-control form-control-alternative" placeholder="Name" value="{{user?.name}}"/>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Email address</label>
-                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com">
+                        <input type="email" id="input-email" readonly class="form-control form-control-alternative" placeholder="{{user?.email}}" value="{{user?.email}}"/>
                       </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group focused">
-                        <label class="form-control-label" for="input-first-name">First name</label>
-                        <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="Lucky">
+                        <label class="form-control-label" for="input-first-name">Gender</label>
+                        <!-- <input type="text" id="input-first-name" formControlName="gender" class="form-control form-control-alternative" placeholder="Gender" value="{{user?.gender | titlecase}}"/> -->
+                        <select class="form-select" aria-label="Default select example" formControlName="gender">
+                          <option value="Male" [selected] = "user?.gender === 'Male'">Male</option>
+                          <option value="Female" [selected] = "user?.gender === 'Female'">Female</option>
+                        </select>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
-                        <label class="form-control-label" for="input-last-name">Last name</label>
-                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="Jesse">
+                        <label class="form-control-label" for="input-last-name">Status</label>
+                        <input type="text" id="input-last-name" readonly class="form-control form-control-alternative" placeholder="Status" value="{{user?.status ? 'Active' :'Inactive'}}"/>
                       </div>
                     </div>
                   </div>
                 </div>
                 <hr class="my-4">
                 <!-- Address -->
-                <h6 class="heading-small text-muted mb-4">Contact information</h6>
+                <!-- <h6 class="heading-small text-muted mb-4">Contact information</h6>
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-md-12">
@@ -151,14 +169,21 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <hr class="my-4">
                 <!-- Description -->
                 <h6 class="heading-small text-muted mb-4">About me</h6>
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label>About Me</label>
-                    <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+                    <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">Hey I am Developer.....</textarea>
+                  </div>
+                </div>
+                
+                <div class="col-md-12">
+                  <button class="btn btn-default">Update Profile</button>
+                  <div class="alert alert-success mt-2" role="alert" *ngIf="this.success == true">
+                    Profile Updated Successfully.
                   </div>
                 </div>
               </form>

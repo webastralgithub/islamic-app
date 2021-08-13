@@ -6,9 +6,6 @@ import { ResetPinComponent } from './auth/components/reset-pin/reset-pin.compone
 import { AuthGuard } from './guard';
 import { PageNotfoundComponent } from './modules/page-notfound/page-notfound.component';
 
-
-
-
 const routes: Routes = [
   {
     path: 'dashboard',

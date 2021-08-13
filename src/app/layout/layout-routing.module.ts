@@ -9,6 +9,9 @@ import { EditBookComponent } from '../modules/book-list/edit-book/edit-book.comp
 import { BookCreateComponent } from '../modules/book-list/book-create/book-create.component';
 import { AuthGuard } from '../guard';
 import { AdminEditProfileComponent } from '../modules/admin-edit-profile/admin-edit-profile.component';
+import { CreateChapterComponent } from '../modules/book-list/chapters-list/create-chapter/create-chapter.component';
+import { EditChapterComponent } from '../modules/book-list/chapters-list/edit-chapter/edit-chapter.component';
+import { ChaptersListComponent } from '../modules/book-list/chapters-list/chapters-list.component';
 
 
 
@@ -60,6 +63,27 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: 'admin/edit-profile', component: AdminEditProfileComponent,canActivate: [AuthGuard] }
+    ]
+  },
+  { 
+    path: '', 
+    component: LayoutComponent,
+    children: [
+      { path: 'chapter/create', component:CreateChapterComponent,canActivate: [AuthGuard] }
+    ]
+  },
+  { 
+    path: '', 
+    component: LayoutComponent,
+    children: [
+      { path: 'editChapter/:id', component: EditChapterComponent,canActivate: [AuthGuard] }
+    ]
+  },
+  { 
+    path: '', 
+    component: LayoutComponent,
+    children: [
+      { path: 'chapter-list/:id', component: ChaptersListComponent,canActivate: [AuthGuard] }
     ]
   },
 ];

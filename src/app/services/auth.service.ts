@@ -3,6 +3,7 @@ import {Observable, BehaviorSubject} from 'rxjs';
 import { HttpHeaders,HttpClient } from "@angular/common/http";
 import {map} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
+import { AnySrvRecord } from 'dns';
   
 @Injectable({
   providedIn: 'root'
@@ -53,6 +54,7 @@ this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
       .pipe(map(user=>{
 
         this.adminId = user._id;
+        return user;
         
       }));
   }
@@ -135,4 +137,30 @@ this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
     const response = this.http.get<any>(endPoint,httpOptions);
     return response;
   }
+
+
+  updateAdmin(data:any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'auth-token':this.currentUser.auth_token
+      })
+    };
+    const endPoint = environment.apiURL + "user/update/"+this.adminId;
+    const response = this.http.patch<any>(endPoint,data,httpOptions);
+    return response;
+  }
+
+  uploadImage(data:any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/xml',
+        'auth-token':this.currentUser.auth_token
+      })
+    };
+    const endPoint = environment.apiURL + "user/updateUserImage/"+this.adminId;
+    const response = this.http.patch<any>(endPoint,data);
+    return response;
+  }
+
 }

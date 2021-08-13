@@ -1,0 +1,24 @@
+<a routerLink="/dashboard/chapter/create" class="btn btn-primary create_book"><i class="fa fa-plus"></i> New Chapter</a>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Image</th>
+        <th scope="col">Description</th>
+        <th scope="col">Book Id</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let chapter of chapters; index as i;">
+        <th scope="row">{{i+1}}</th>
+        <td>{{chapter.title | titlecase }}</td>
+        <td [innerHTML]="chapter.description"></td>
+        <td>{{chapter._id}}</td>
+       
+        <td><button class="btn btn-danger" (click)= "deleteChapter(chapter._id)"><i class="fa fa-fw fa-trash"></i></button>
+        <a [routerLink]="[ '/dashboard/editChapter',chapter._id]" class="btn btn-info ml-1"><i class="fa fa-fw fa-edit"></i></a></td>
+      </tr>
+    
+    </tbody>
+  </table> 

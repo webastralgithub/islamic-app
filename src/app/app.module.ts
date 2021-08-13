@@ -18,6 +18,10 @@ import { EditorModule } from '@progress/kendo-angular-editor';
 import { AuthGuard } from './guard';
 import { PageNotfoundComponent } from './modules/page-notfound/page-notfound.component';
 import { AdminEditProfileComponent } from './modules/admin-edit-profile/admin-edit-profile.component';
+import { ChaptersListComponent } from './modules/book-list/chapters-list/chapters-list.component';
+import { CreateChapterComponent } from './modules/book-list/chapters-list/create-chapter/create-chapter.component';
+import { EditChapterComponent } from './modules/book-list/chapters-list/edit-chapter/edit-chapter.component';
+
 
 
 @NgModule({
@@ -32,6 +36,9 @@ import { AdminEditProfileComponent } from './modules/admin-edit-profile/admin-ed
     EditBookComponent,
     PageNotfoundComponent,
     AdminEditProfileComponent,
+    ChaptersListComponent,
+    CreateChapterComponent,
+    EditChapterComponent,
   ],
   imports: [
     BrowserModule,
