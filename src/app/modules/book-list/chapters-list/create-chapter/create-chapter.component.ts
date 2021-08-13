@@ -36,6 +36,7 @@ export class CreateChapterComponent implements OnInit {
   success: boolean =false;
   public events: string[] = [];
   public value = ``;
+  chapter_id!:string;
   
   ngOnInit() { }
   
@@ -45,7 +46,7 @@ export class CreateChapterComponent implements OnInit {
     .subscribe(
       book =>{
         this.books = book.data;
-        
+               
       },
       error =>{
         this.error = error.error.msg;
@@ -66,17 +67,12 @@ export class CreateChapterComponent implements OnInit {
 
 get f(){ return this.chapterform.controls;}
     submitForm =() => {
-      // var formData: any = new FormData();
-      // formData.append("title", this.f.title.value);
-      // formData.append("description", this.f.description.value);
-      // formData.append("author", this.f.book_id.value);
       
       this.chapterService.storeChapter(this.f.title.value,this.f.description.value,this.f.book_id.value).pipe(first())
       .subscribe(
         data =>{
           this.success =true;
-          // this.router.navigate(['dashboard/chapter-list']);
-          console.log(data);          
+          this.router.navigate(['dashboard/chapter-list/'+this.f.book_id.value]);         
         },
         error =>{
           this.error = error;

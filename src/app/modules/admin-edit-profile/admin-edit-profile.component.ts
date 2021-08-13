@@ -31,11 +31,16 @@ success:boolean=false;
       image: ['', Validators.required],
     });
 this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+this.getCurrentUser();
   }
 user!:User;
 fileData:any;
 profile_image = environment.imgURL+'users';
   ngOnInit(): void {
+   
+  }
+
+  getCurrentUser(){
     this.authService.getCurrentUser()
     .pipe(first())
     .subscribe(
@@ -62,7 +67,7 @@ profile_image = environment.imgURL+'users';
     setTimeout(()=>{
       this.success = false;
     },2000)
-    
+    this.getCurrentUser();
    })
 
   }
@@ -73,14 +78,12 @@ profile_image = environment.imgURL+'users';
     
     reader.onload = () => {
       this.imageSrc = reader.result as string;
-      // console.log(file.name);
     
     this.uploadImage.patchValue({
       image: file,
       fileData: file,
     });
     this.uploadImage.get('image')!.updateValueAndValidity();
-    // console.log(this.uploadImage.get('image')!.value);
     
     var formData: any = new FormData();
     formData.append("image", this.uploadImage.get('image')!.value);
@@ -90,13 +93,10 @@ profile_image = environment.imgURL+'users';
     .subscribe(
       data =>{
 
-        console.log(data);
         this.success =true;
-        // this.router.navigate(['dashboard/books']);
-        
+        // this.getCurrentUser();
       },
       error =>{
-        // this.error = error;
         console.log(error)
       }
     );
