@@ -19,6 +19,11 @@
         <td><button class="btn btn-danger" (click)= "deleteChapter(chapter._id)"><i class="fa fa-fw fa-trash"></i></button>
         <a [routerLink]="[ '/dashboard/editChapter',chapter._id]" class="btn btn-info ml-1"><i class="fa fa-fw fa-edit"></i></a></td>
       </tr>
-    
+      <!-- <ng-container *ngIf="!chapters?.length"><p class="text-centre mt-2">No record found !!</p></ng-container> -->
     </tbody>
   </table> 
+  <div class="row" *ngIf="!chapters?.length">
+    <div class="col-md-12">
+      <p class="mx-2">No record found !</p>
+    </div>
+  </div>

@@ -3,7 +3,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {first} from 'rxjs/operators';
 import { BooksService } from 'src/app/services/books.service';
 import { environment } from 'src/environments/environment';
-
+import { Book } from 'src/app/models/book';
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 })
 export class BookListComponent implements OnInit {
 
-  books:any;
+  books!:Book[];
   error:any;
   success:any;
   ImgUrl=environment.imgURL+'books/';

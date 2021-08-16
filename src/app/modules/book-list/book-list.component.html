@@ -24,3 +24,8 @@
     
     </tbody>
   </table> 
+  <div class="row" *ngIf="books?.length === 0">
+    <div class="col-md-12">
+      <p class="mx-2">No record found !</p>
+    </div>
+  </div>

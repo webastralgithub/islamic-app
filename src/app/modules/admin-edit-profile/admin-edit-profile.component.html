@@ -1,6 +1,5 @@
 <div class="main-content">
     <!-- Top navbar -->
-  
     <!-- Header -->
     <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url({{profile_image}}/{{user?.profile_image}}); background-size: cover; background-position: center top;">
       <!-- Mask -->
@@ -30,10 +29,6 @@
                       <form enctype="multipart/form-data" [formGroup]="uploadImage">
                         <input type="file" (change)="uploadFile($event)" name="file"/>
                       </form>
-                      <!-- <input #imageInput
-         type="file"
-         accept="image/*"
-         (change)="processFile(imageInput)"> -->
                        
                     </div>
                     <div class="pen-icon">

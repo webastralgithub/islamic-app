@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 
 import {first} from 'rxjs/operators';
 import { JournalService } from 'src/app/services/journal.service';
+import { Journal } from 'src/app/models/journal';
 
 @Component({
   selector: 'app-journals',
@@ -15,7 +16,7 @@ import { JournalService } from 'src/app/services/journal.service';
   styleUrls: ['./journals.component.scss']
 })
 export class JournalsComponent implements OnInit {
-  journals:any;
+  journals!:Journal[];
   error:any;
   success:any;
   constructor(

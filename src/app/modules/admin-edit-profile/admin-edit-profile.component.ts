@@ -8,7 +8,6 @@ import { AuthService } from 'src/app/services/auth.service';
 import { environment } from 'src/environments/environment';
 
 
-
 @Component({
   selector: 'app-admin-edit-profile',
   templateUrl: './admin-edit-profile.component.html',
@@ -92,16 +91,19 @@ profile_image = environment.imgURL+'users';
     this.authService.uploadImage(formData).pipe(first())
     .subscribe(
       data =>{
-
         this.success =true;
-        // this.getCurrentUser();
+        this.getCurrentUser();
+        setTimeout(()=>{
+          this.success = false;
+        },2000)
+       
       },
       error =>{
         console.log(error)
       }
     );
   }
-
+ 
 }
  
 }

@@ -17,7 +17,13 @@
     <a routerLink="/dashboard/admin/edit-profile" class="editprofile ml-auto mr-2"><i class="fa fa-edit mr-1"></i> <strong>Edit Profile</strong></a>
   </header>
 
-  <div class="c-body">
-    <router-outlet></router-outlet>
+  <div class="c-body">  
+    <div class="row mx-2" *ngIf="this.router.url !=='/dashboard'">
+      <div class="col-md-12 text-left mt-3">
+        <button (click)="backClicked()" class="btn btn-dark"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</button>
+      </div>       
+    </div>  
+    <hr class="w-100">       
+    <router-outlet></router-outlet>    
   </div>
 </div>

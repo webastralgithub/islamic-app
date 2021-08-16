@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { Chapter } from 'src/app/models/chapter';
 import { ChaptersService } from 'src/app/services/chapters.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class ChaptersListComponent implements OnInit {
   constructor(public fb: FormBuilder,private chapterService: ChaptersService,private _Activatedroute:ActivatedRoute, private http: HttpClient,private router:Router) {
     this.getChapter();
    }
-  chapters:any;
+  chapters!:Chapter[];
   error!:string;
   bookid!:any;
   ngOnInit() {}

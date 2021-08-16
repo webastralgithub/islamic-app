@@ -58,4 +58,5 @@ export class SidebarComponent {
         this.authService.logout();
         this.router.navigate(["/"]);
       }
+    
 }
