@@ -1,17 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {first} from 'rxjs/operators';
+// import {first} from 'rxjs/operators';
 import { BooksService } from 'src/app/services/books.service';
 import { environment } from 'src/environments/environment';
 import { Book } from 'src/app/models/book';
+import { Subject } from 'rxjs';
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.scss']
 })
-export class BookListComponent implements OnInit {
+export class BookListComponent implements OnInit,OnDestroy {
 
-  books!:Book[];
+  dtOptions: DataTables.Settings = {};
+  books: Book[] = [];
+  dtTrigger: Subject<any> = new Subject<any>();
+ 
   error:any;
   success:any;
   ImgUrl=environment.imgURL+'books/';
@@ -20,23 +24,22 @@ export class BookListComponent implements OnInit {
     private router: Router,
     private bookService: BooksService
    
-  ) { this.getBooks(); }
-
+  ) { }
+ 
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10
+    };
+    this.getBooks();
   }
 
   getBooks = () =>{
     this.bookService.bookList()
-    .pipe(first())
-    .subscribe(
-      book =>{
-        this.books = book.data;
-      },
-      error =>{
-        this.error = error.error.msg;
-        
-      }
-    )
+    .subscribe(data => {
+      this.books = (data as any).data;
+      this.dtTrigger.next();
+    });
 
   }
   deleteBook(id:string){
@@ -45,7 +48,6 @@ export class BookListComponent implements OnInit {
       return;
     }
     this.bookService.deleteBook(id)
-    .pipe(first())
     .subscribe(
       data =>{
         this.success = 'Book Deleted Successfully';
@@ -59,6 +61,9 @@ export class BookListComponent implements OnInit {
     
   }
 
-
+  ngOnDestroy(): void {
+    // Do not forget to unsubscribe the event
+    this.dtTrigger.unsubscribe();
+  }
 
 }

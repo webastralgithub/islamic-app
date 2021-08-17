@@ -12,3 +12,37 @@ a.editprofile{
 a.editprofile i {
     font-size: 20px;
 }
+.back-btn {
+    background: white;
+    padding: 13px 0px;
+    margin: 0 !important;
+    box-shadow: 0 2px 2px 0 rgb(60 75 100 / 14%), 0 3px 1px -2px rgb(60 75 100 / 12%), 0 1px 5px 0 rgb(60 75 100 / 20%);
+    border-top: 1px solid #808080;
+}
+header {
+    align-items: center;
+    justify-content: space-between;
+}
+.dropdown-menu.show a {
+    color: #3c4b64;
+    display: inline-block;
+    padding: 5px;
+}
+.dropdown-menu {
+    min-width: 8rem;
+    padding: 0.5rem 13px;
+}
+.img-profile {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    object-position: 0 10%;
+    border-radius: 50%;
+    margin: 0 4px;
+}
+.cstm-tbl {
+    margin: 0 10px;
+}
+a{
+    text-decoration: none;
+}

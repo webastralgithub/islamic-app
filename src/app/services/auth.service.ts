@@ -161,4 +161,14 @@ this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
     return response;
   }
 
+  createUser(data:any){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'auth-token':this.currentUser.auth_token
+      })
+    };
+    const endPoint = environment.apiURL + 'user/register';
+    const response =  this.http.post<any>(endPoint, data);
+    return response;
+  }
 }

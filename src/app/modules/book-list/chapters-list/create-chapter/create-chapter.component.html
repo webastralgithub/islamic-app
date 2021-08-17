@@ -39,15 +39,15 @@
               ></kendo-editor>
             </div>
           </div>
-          <div class="form-group">
+          <input type="hidden" value="{{bookid}}" style="display: none;" formControlName="book_id">
+          <!-- <div class="form-group">
             <label class="col-lg-3 control-label">Select book:</label>
             <div class="col-lg-8">
               <select name="books" id="" class="form-control" formControlName="book_id">
-                  <!-- <option selected>Select Any one book</option> -->
                   <option value="{{book?._id}}" *ngFor="let book of books; index as i;">{{book?.title}}</option>
               </select>
-          </div>
-        </div>
+            </div>
+          </div> -->
           <div class="col-lg-8">
           <button class="btn btn-danger btn-block">
             Create Chapter

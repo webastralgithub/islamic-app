@@ -1,6 +1,7 @@
-<a routerLink="/dashboard/book/create" class="btn btn-primary create_book"><i class="fa fa-plus"></i> New Book</a>
-<table class="table table-hover">
-    <thead>
+<a routerLink="/dashboard/book/create" class="btn btn-info create_book"><i class="fa fa-plus"></i> New Book</a>
+<div class="cstm-tbl" style="margin:0 10px">
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table-bordered">
+    <thead> 
       <tr>
         <th scope="col">#</th>
         <th scope="col">Image</th>
@@ -24,8 +25,4 @@
     
     </tbody>
   </table> 
-  <div class="row" *ngIf="books?.length === 0">
-    <div class="col-md-12">
-      <p class="mx-2">No record found !</p>
-    </div>
-  </div>
+</div>

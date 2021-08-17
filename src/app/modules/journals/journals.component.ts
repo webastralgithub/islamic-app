@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
 import { AuthService } from 'src/app/services/auth.service';
-
+import { Subject } from 'rxjs';
 
 import {first} from 'rxjs/operators';
 import { JournalService } from 'src/app/services/journal.service';
@@ -16,6 +16,8 @@ import { Journal } from 'src/app/models/journal';
   styleUrls: ['./journals.component.scss']
 })
 export class JournalsComponent implements OnInit {
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
   journals!:Journal[];
   error:any;
   success:any;
@@ -24,10 +26,18 @@ export class JournalsComponent implements OnInit {
     private router: Router,
     private journalService: JournalService
    
-  ) {
-    this.getJournals();
+  ) {}
 
+  ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      // serverSide: true,
+      processing: true,
+    };
+    this.getJournals();
   }
+
   getJournals = () =>{
     this.journalService.journalListing()
     .pipe(first())
@@ -36,7 +46,7 @@ export class JournalsComponent implements OnInit {
 
         console.log(journal.data);
         this.journals = journal.data;
-        
+        this.dtTrigger.next();
         
       },
       error =>{
@@ -45,8 +55,6 @@ export class JournalsComponent implements OnInit {
       }
     )
 
-  }
-  ngOnInit(): void {
   }
   deleteJournal(id:string){
     this.journalService.deleteJournal(id)

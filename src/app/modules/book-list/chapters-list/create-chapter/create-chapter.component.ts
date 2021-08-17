@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { BooksService } from 'src/app/services/books.service';
 import { ChaptersService } from 'src/app/services/chapters.service';
@@ -18,7 +18,7 @@ export class CreateChapterComponent implements OnInit {
   books:any;
   fileData:any;
   currentUser:any
-    constructor(public fb: FormBuilder,private chapterService: ChaptersService,private bookService:BooksService, private http: HttpClient,private router:Router) {
+    constructor(public fb: FormBuilder,private _Activatedroute:ActivatedRoute,private chapterService: ChaptersService,private bookService:BooksService, private http: HttpClient,private router:Router) {
       this.chapterform = this.fb.group({
         title: ['', Validators.required],
         description: ['', Validators.required],
@@ -28,6 +28,11 @@ export class CreateChapterComponent implements OnInit {
    
   this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
  this.getBooks();
+ this._Activatedroute.paramMap.subscribe(params => { 
+  this.bookid = params.get('id');
+  // console.log(this.bookid);
+  
+});
     }
   loading = false;
   submitted = false;
@@ -37,8 +42,11 @@ export class CreateChapterComponent implements OnInit {
   public events: string[] = [];
   public value = ``;
   chapter_id!:string;
+  bookid!:any;
   
-  ngOnInit() { }
+  ngOnInit() {
+    
+   }
   
   getBooks = () =>{
     this.bookService.bookList()
@@ -54,7 +62,7 @@ export class CreateChapterComponent implements OnInit {
       }
     )
 
-  }
+  } 
   public valueChange(value: any): void {
     this.log("valueChange", value);
   }
@@ -72,7 +80,7 @@ get f(){ return this.chapterform.controls;}
       .subscribe(
         data =>{
           this.success =true;
-          this.router.navigate(['dashboard/chapter-list/'+this.f.book_id.value]);         
+          this.router.navigate(['dashboard/chapter-list/'+this.bookid]);         
         },
         error =>{
           this.error = error;

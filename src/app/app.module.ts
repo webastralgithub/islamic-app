@@ -21,7 +21,8 @@ import { AdminEditProfileComponent } from './modules/admin-edit-profile/admin-ed
 import { ChaptersListComponent } from './modules/book-list/chapters-list/chapters-list.component';
 import { CreateChapterComponent } from './modules/book-list/chapters-list/create-chapter/create-chapter.component';
 import { EditChapterComponent } from './modules/book-list/chapters-list/edit-chapter/edit-chapter.component';
-
+import { CreateUserComponent } from './modules/create-user/create-user.component';
+import { DataTablesModule } from "angular-datatables";
 
 
 @NgModule({
@@ -39,9 +40,11 @@ import { EditChapterComponent } from './modules/book-list/chapters-list/edit-cha
     ChaptersListComponent,
     CreateChapterComponent,
     EditChapterComponent,
+    CreateUserComponent,
   ],
   imports: [
     BrowserModule,
+    DataTablesModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,

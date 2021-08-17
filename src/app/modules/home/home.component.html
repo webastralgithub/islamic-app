@@ -1,4 +1,6 @@
-<table class="table table-hover mb-5">
+<a routerLink="/dashboard/user/create" class="btn btn-info create_book"><i class="fa fa-plus"></i> New User</a>
+<div class="cstm-tbl" style="margin:0 10px">
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table-bordered">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -29,8 +31,8 @@
     
           </section>
         </td>
-        <td><button class="btn btn-danger" (click)= "deleteUser(user._id)"><i class="fa fa-fw fa-trash"></i></button> <a [routerLink]="[ '/dashboard/userProfile',user._id]" class="btn btn-info ml-1"><i class="fa fa-fw fa-user"></i></a></td>
+        <td><button class="btn btn-danger" (click)= "deleteUser(user._id)"><i class="fa fa-fw fa-trash"></i></button> <a [routerLink]="[ '/dashboard/userProfile',user._id]" class="btn btn-info ml-1"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
       </tr>
     
     </tbody>
-  </table>
+  </table></div>

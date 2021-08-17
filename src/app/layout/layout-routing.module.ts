@@ -12,6 +12,7 @@ import { AdminEditProfileComponent } from '../modules/admin-edit-profile/admin-e
 import { CreateChapterComponent } from '../modules/book-list/chapters-list/create-chapter/create-chapter.component';
 import { EditChapterComponent } from '../modules/book-list/chapters-list/edit-chapter/edit-chapter.component';
 import { ChaptersListComponent } from '../modules/book-list/chapters-list/chapters-list.component';
+import { CreateUserComponent } from '../modules/create-user/create-user.component';
 
 
 
@@ -69,7 +70,7 @@ const routes: Routes = [
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'chapter/create', component:CreateChapterComponent,canActivate: [AuthGuard] }
+      { path: 'chapter/create/:id', component:CreateChapterComponent,canActivate: [AuthGuard] }
     ]
   },
   { 
@@ -84,6 +85,13 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: 'chapter-list/:id', component: ChaptersListComponent,canActivate: [AuthGuard] }
+    ]
+  },
+  { 
+    path: '', 
+    component: LayoutComponent,
+    children: [
+      { path: 'user/create', component: CreateUserComponent,canActivate: [AuthGuard] }
     ]
   },
 ];
