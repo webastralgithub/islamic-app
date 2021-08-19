@@ -1,38 +1,41 @@
 <a routerLink="/dashboard/user/create" class="btn btn-info create_book"><i class="fa fa-plus"></i> New User</a>
 <div class="cstm-tbl" style="margin:0 10px">
-<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table-bordered">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Gender</th>
-        <th scope="col">Status</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users; index as i;">
-        <th scope="row">{{i+1}}</th>
-        <td>{{user.name | titlecase }}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.gender | titlecase}}</td>
-        <td><section class="section-preview">
+<div class="cstm-table">
+  <ngx-ui-loader></ngx-ui-loader>
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table-bordered table-responsive">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Status</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users; index as i;">
+          <th scope="row">{{i+1}}</th>
+          <td>{{user.name | titlecase }}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.gender | titlecase}}</td>
+          <td><section class="section-preview">
 
-            <div class="custom-control custom-switch" *ngIf="!user.status">
-              <input type="checkbox" class="custom-control-input" id="customSwitches{{i+1}}" (click) = "changeStatus(user.status,user._id)">
-              <label class="custom-control-label" for="customSwitches{{i+1}}"></label>
-            </div>
-    
-            <div class="custom-control custom-switch"  *ngIf="user.status != false">
-              <input type="checkbox" class="custom-control-input" id="customSwitches{{i+1}}" checked="" (click) = "changeStatus(user.status,user._id)">
-              <label class="custom-control-label" for="customSwitches{{i+1}}"></label>
-            </div>
-    
-          </section>
-        </td>
-        <td><button class="btn btn-danger" (click)= "deleteUser(user._id)"><i class="fa fa-fw fa-trash"></i></button> <a [routerLink]="[ '/dashboard/userProfile',user._id]" class="btn btn-info ml-1"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
-      </tr>
-    
-    </tbody>
-  </table></div>
+              <div class="custom-control custom-switch" *ngIf="!user.status">
+                <input type="checkbox" class="custom-control-input" id="customSwitches{{i+1}}" (click) = "changeStatus(user.status,user._id)">
+                <label class="custom-control-label" for="customSwitches{{i+1}}"></label>
+              </div>
+      
+              <div class="custom-control custom-switch"  *ngIf="user.status != false">
+                <input type="checkbox" class="custom-control-input" id="customSwitches{{i+1}}" checked="" (click) = "changeStatus(user.status,user._id)">
+                <label class="custom-control-label" for="customSwitches{{i+1}}"></label>
+              </div>
+      
+            </section>
+          </td>
+          <td><button class="btn btn-danger" (click)= "deleteUser(user._id)"><i class="fa fa-fw fa-trash"></i></button> <a [routerLink]="[ '/dashboard/userProfile',user._id]" class="btn btn-info ml-1"><i class="fa fa-eye" aria-hidden="true"></i></a><a [routerLink]="[ '/dashboard/user/edit',user?._id]" class="btn btn-info ml-1"><i class="fa fa-fw fa-edit"></i></a></td>
+        </tr>    
+      </tbody>
+  </table>
+</div>
+</div>

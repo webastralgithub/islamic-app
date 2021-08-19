@@ -5,6 +5,7 @@ import { BooksService } from 'src/app/services/books.service';
 import { environment } from 'src/environments/environment';
 import { Book } from 'src/app/models/book';
 import { Subject } from 'rxjs';
+import { NgxUiLoaderService } from "ngx-ui-loader";
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
@@ -22,14 +23,14 @@ export class BookListComponent implements OnInit,OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private bookService: BooksService
+    private bookService: BooksService,
+    private ngxService: NgxUiLoaderService
    
   ) { }
  
   ngOnInit(): void {
     this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 10
+      pageLength: 5
     };
     this.getBooks();
   }
@@ -37,6 +38,10 @@ export class BookListComponent implements OnInit,OnDestroy {
   getBooks = () =>{
     this.bookService.bookList()
     .subscribe(data => {
+      this.ngxService.start(); 
+      setTimeout(() => {
+        this.ngxService.stop(); 
+      }, 1000);
       this.books = (data as any).data;
       this.dtTrigger.next();
     });

@@ -1,3 +1,11 @@
 table.table.table-hover.mb-5 {
     margin: 35px 7px 0px 9px;
 }
+.cstm-tbl {
+    white-space: pre;
+}
+@media (min-width:768px){
+    .table-responsive {
+        display: table !important;
+    }
+}

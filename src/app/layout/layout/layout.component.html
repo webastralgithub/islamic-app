@@ -12,10 +12,10 @@
     </button>
 
     <div class="c-header-brand">
-      <strong>Journal list</strong>-Dashboard
+      <strong>Journal list</strong>
     </div>
     <!-- <a routerLink="/dashboard/admin/edit-profile" class="editprofile ml-auto mr-2"><i class="fa fa-edit mr-1"></i> <strong>Edit Profile</strong></a> -->
-    <div class="dropdown mr-3">
+    <div class="dropdown mr-md-3">
       <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" (click) = "dropdownHandler()"><img src="{{profile_image}}/{{user?.profile_image}}" class="img-profile" alt="">{{user?.name}} <span class="caret"></span></button>
       <ul class="dropdown-menu {{isOpen ? 'show':''}}">
         <li><a routerLink="/dashboard/admin/edit-profile">Edit Profile</a></li>

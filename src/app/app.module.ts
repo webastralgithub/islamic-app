@@ -23,7 +23,8 @@ import { CreateChapterComponent } from './modules/book-list/chapters-list/create
 import { EditChapterComponent } from './modules/book-list/chapters-list/edit-chapter/edit-chapter.component';
 import { CreateUserComponent } from './modules/create-user/create-user.component';
 import { DataTablesModule } from "angular-datatables";
-
+import { NgxUiLoaderModule } from "ngx-ui-loader";
+import { EditUserComponent } from './modules/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { DataTablesModule } from "angular-datatables";
     CreateChapterComponent,
     EditChapterComponent,
     CreateUserComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,8 @@ import { DataTablesModule } from "angular-datatables";
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    EditorModule
+    EditorModule,
+    NgxUiLoaderModule
   ],
  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},[AuthGuard]],
   bootstrap: [AppComponent]

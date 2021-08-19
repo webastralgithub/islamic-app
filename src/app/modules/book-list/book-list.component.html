@@ -1,6 +1,6 @@
 <a routerLink="/dashboard/book/create" class="btn btn-info create_book"><i class="fa fa-plus"></i> New Book</a>
 <div class="cstm-tbl" style="margin:0 10px">
-  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table-bordered">
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table-bordered table-responsive">
     <thead> 
       <tr>
         <th scope="col">#</th>
@@ -26,3 +26,4 @@
     </tbody>
   </table> 
 </div>
+<ngx-ui-loader></ngx-ui-loader>

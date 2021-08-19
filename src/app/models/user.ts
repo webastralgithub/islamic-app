@@ -5,4 +5,6 @@ export interface User {
   gender: string;
   status: boolean;
   profile_image: string;
+  mobile_number: string;
+  address:any;
 }

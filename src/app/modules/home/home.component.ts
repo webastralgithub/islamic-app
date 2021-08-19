@@ -6,7 +6,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 import {first} from 'rxjs/operators';
-
+import { NgxUiLoaderService } from "ngx-ui-loader";
 import { User } from 'src/app/models/user'
 import { Subject } from 'rxjs';
 @Component({
@@ -26,16 +26,18 @@ export class HomeComponent implements OnInit,OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private ngxService: NgxUiLoaderService
    
   ) {}
 
   ngOnInit(): void {
+     
     this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 10,
+      // pagingType: 'full_numbers',
+      pageLength: 5,
       // serverSide: true,
-      processing: true,
+      // processing: true,
     };
     this.getUser();
   }
@@ -44,6 +46,10 @@ export class HomeComponent implements OnInit,OnDestroy {
     this.authService.getUsers()
     .subscribe(
       users =>{
+          this.ngxService.start(); 
+          setTimeout(() => {
+            this.ngxService.stop(); 
+          }, 1000);
         this.users = users.data;
         this.dtTrigger.next();
       },

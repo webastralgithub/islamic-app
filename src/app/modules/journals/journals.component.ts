@@ -9,6 +9,7 @@ import { Subject } from 'rxjs';
 import {first} from 'rxjs/operators';
 import { JournalService } from 'src/app/services/journal.service';
 import { Journal } from 'src/app/models/journal';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-journals',
@@ -24,7 +25,8 @@ export class JournalsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private journalService: JournalService
+    private journalService: JournalService,
+    private ngxService: NgxUiLoaderService
    
   ) {}
 
@@ -32,7 +34,6 @@ export class JournalsComponent implements OnInit {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
-      // serverSide: true,
       processing: true,
     };
     this.getJournals();
@@ -43,8 +44,10 @@ export class JournalsComponent implements OnInit {
     .pipe(first())
     .subscribe(
       journal =>{
-
-        console.log(journal.data);
+        this.ngxService.start(); 
+        setTimeout(() => {
+          this.ngxService.stop(); 
+        }, 1000);
         this.journals = journal.data;
         this.dtTrigger.next();
         

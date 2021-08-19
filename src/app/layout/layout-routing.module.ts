@@ -13,6 +13,7 @@ import { CreateChapterComponent } from '../modules/book-list/chapters-list/creat
 import { EditChapterComponent } from '../modules/book-list/chapters-list/edit-chapter/edit-chapter.component';
 import { ChaptersListComponent } from '../modules/book-list/chapters-list/chapters-list.component';
 import { CreateUserComponent } from '../modules/create-user/create-user.component';
+import { EditUserComponent } from '../modules/edit-user/edit-user.component';
 
 
 
@@ -29,6 +30,13 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: 'userProfile/:id', component: UserProfileComponent,data: {routeName: "profile"},canActivate: [AuthGuard] }
+    ]
+  },
+  { 
+    path: '', 
+    component: LayoutComponent,
+    children: [
+      { path: 'user/edit/:id', component: EditUserComponent,canActivate: [AuthGuard] }
     ]
   },
   { 

@@ -150,6 +150,18 @@ this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
     return response;
   }
 
+  updateUser(data:any,id:string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'auth-token':this.currentUser.auth_token
+      })
+    };
+    const endPoint = environment.apiURL + "user/update/"+id;
+    const response = this.http.patch<any>(endPoint,data,httpOptions);
+    return response;
+  }
+
   uploadImage(data:any): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({

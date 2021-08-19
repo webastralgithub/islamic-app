@@ -22,10 +22,14 @@ export class CreateUserComponent implements OnInit {
     constructor(public fb: FormBuilder,private authService: AuthService,private _Activatedroute:ActivatedRoute, private http: HttpClient,private router:Router) {
       this.createUser = this.fb.group({
         name: ['', Validators.required],
+        email: ['', Validators.required],
         gender: ['', Validators.required],
+        password: ['', Validators.required],
+        address: ['', Validators.required],
+        mobile_number:['', Validators.required],
+        user_role:['', Validators.required],
       });
   this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
-  this.getCurrentUser();
     }
   user!:User;
   fileData:any;
@@ -34,76 +38,65 @@ export class CreateUserComponent implements OnInit {
      
     }
   
-    getCurrentUser(){
-      this.authService.getCurrentUser()
-      .pipe(first())
-      .subscribe(
-        data =>{
-          this.user = data;
-          this.createUser.patchValue({
-            name: this.user.name,
-            gender: this.user.gender,
-           
-        });
-        },
-        error =>{
-         console.log(error);
-               
-        }
-      )
-    }
     get f(){ return this.createUser.controls;}
-    updateUser(){
-     console.log(this.createUser.value);
-     this.authService.updateAdmin(this.createUser.value).subscribe((res)=>{
-      console.log(res);
-      this.success = true;
-      setTimeout(()=>{
-        this.success = false;
-      },2000)
-      this.getCurrentUser();
-     })
+    // updateUser(){
+    //  console.log(this.createUser.value);
+    //  this.authService.updateAdmin(this.createUser.value).subscribe((res)=>{
+    //   console.log(res);
+    //   this.success = true;
+    //   setTimeout(()=>{
+    //     this.success = false;
+    //   },2000)
+    //   this.getCurrentUser();
+    //  })
   
-    }
-    uploadFile(event:any) {
-      const reader = new FileReader();
-      const file = event.target.files[0];
-      reader.readAsDataURL(file);
+    // }
+    // uploadFile(event:any) {
+    //   const reader = new FileReader();
+    //   const file = event.target.files[0];
+    //   reader.readAsDataURL(file);
       
-      reader.onload = () => {
-        this.imageSrc = reader.result as string;
+    //   reader.onload = () => {
+    //     this.imageSrc = reader.result as string;
       
-      this.createUser.patchValue({
-        image: file,
-        fileData: file,
-      });
-      this.createUser.get('image')!.updateValueAndValidity();
+    //   this.createUser.patchValue({
+    //     image: file,
+    //     fileData: file,
+    //   });
+    //   this.createUser.get('image')!.updateValueAndValidity();
       
-      var formData: any = new FormData();
-      formData.append("image", this.createUser.get('image')!.value);
+    //   var formData: any = new FormData();
+    //   formData.append("image", this.createUser.get('image')!.value);
       
      
-      this.authService.uploadImage(formData).pipe(first())
-      .subscribe(
-        data =>{
-          this.success =true;
-          this.getCurrentUser();
-          setTimeout(()=>{
-            this.success = false;
-          },2000)
+    //   this.authService.uploadImage(formData).pipe(first())
+    //   .subscribe(
+    //     data =>{
+    //       this.success =true;
+    //       this.getCurrentUser();
+    //       setTimeout(()=>{
+    //         this.success = false;
+    //       },2000)
          
-        },
-        error =>{
-          console.log(error)
-        }
-      );
-    }
+    //     },
+    //     error =>{
+    //       console.log(error)
+    //     }
+    //   );
+    // }
    
-  }
+    // }
+    onKey(event:any,val:any){
+    console.log(val);
+
+    }
   saveUser(){
-    
+    this.createUser.value.user_role = 'user';
+    // console.log(this.createUser.value);
+    // return;
     this.authService.createUser(this.createUser.value).subscribe((res)=>{
-      console.log(res);
+      this.success =true;
+      // this.router.navigate(['dashboard/users']);
       
     })
   }

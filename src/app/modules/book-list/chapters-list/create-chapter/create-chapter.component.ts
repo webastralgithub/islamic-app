@@ -76,11 +76,12 @@ export class CreateChapterComponent implements OnInit {
 get f(){ return this.chapterform.controls;}
     submitForm =() => {
       
-      this.chapterService.storeChapter(this.f.title.value,this.f.description.value,this.f.book_id.value).pipe(first())
+      this.chapterService.storeChapter(this.f.title.value,this.f.description.value,this.bookid).pipe(first())
       .subscribe(
         data =>{
           this.success =true;
-          this.router.navigate(['dashboard/chapter-list/'+this.bookid]);         
+          this.router.navigate(['dashboard/chapter-list/'+this.bookid]); 
+          console.log(data);        
         },
         error =>{
           this.error = error;

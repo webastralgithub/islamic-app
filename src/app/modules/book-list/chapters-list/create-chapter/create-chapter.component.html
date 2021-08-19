@@ -1,15 +1,9 @@
 <div class="container bootstrap snippets bootdey">
-    <h1 class="text-info"><span class="glyphicon glyphicon-user"></span>Create Chapter</h1>
-      <hr>
-	<div class="row">
-      <!-- left column -->
-      <div class="col-md-3">
-        <img [src]="imageSrc" *ngIf="imageSrc" style="height: 100px; width:100px">
-        <h6 *ngIf="imageSrc">Upload a different photo...</h6>
-      </div>
+	<div class="row mt-5">
+    
       
-      <div class="col-md-9 personal-info">
-        <div class="col-md-8 alert alert-success alert-dismissable" *ngIf="submitted && success">
+      <div class="col-md-12 personal-info">
+        <div class="col-md-12 alert alert-success alert-dismissable" *ngIf="submitted && success">
           <a class="panel-close close" data-dismiss="alert">×</a> 
           <i class="fa fa-book"></i>
           Chapter Created Successfully.
@@ -18,18 +12,18 @@
         
         <form class="form-horizontal" [formGroup]="chapterform" (ngSubmit)="submitForm()" role="form">
           
-           
+          <div class="form-group">
             <label class="col-lg-12 control-label">Chapter Title</label>
-            <div class="col-lg-8">
+            <div class="col-lg-12">
               <input class="form-control" type="text" placeholder="Enter Chapter Title" formControlName="title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" formControlName="title" ngModel [title]="true">
               <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
                 <div *ngIf="f.title.errors.required">Title is required</div>
             </div>
             </div>
-          
+          </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Description:</label>
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <kendo-editor
                 [value]="value"
                 (valueChange)="valueChange($event)"
@@ -48,7 +42,7 @@
               </select>
             </div>
           </div> -->
-          <div class="col-lg-8">
+          <div class="col-lg-12 ">
           <button class="btn btn-danger btn-block">
             Create Chapter
         </button>

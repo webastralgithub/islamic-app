@@ -1,4 +1,4 @@
-a.editprofile{
+a.editprofile {
     background: #3c4b64;
     color: white;
     margin: 15px;
@@ -16,7 +16,8 @@ a.editprofile i {
     background: white;
     padding: 13px 0px;
     margin: 0 !important;
-    box-shadow: 0 2px 2px 0 rgb(60 75 100 / 14%), 0 3px 1px -2px rgb(60 75 100 / 12%), 0 1px 5px 0 rgb(60 75 100 / 20%);
+    box-shadow: 0 2px 2px 0 rgb(60 75 100 / 14%),
+        0 3px 1px -2px rgb(60 75 100 / 12%), 0 1px 5px 0 rgb(60 75 100 / 20%);
     border-top: 1px solid #808080;
 }
 header {
@@ -29,7 +30,7 @@ header {
     padding: 5px;
 }
 .dropdown-menu {
-    min-width: 8rem;
+    min-width: 12rem;
     padding: 0.5rem 13px;
 }
 .img-profile {
@@ -43,6 +44,15 @@ header {
 .cstm-tbl {
     margin: 0 10px;
 }
-a{
+a {
     text-decoration: none;
+}
+.btn:focus,
+.btn.focus {
+    box-shadow: none;
+}
+@media (max-width: 576px) {
+    .c-header {
+        flex-wrap: inherit;
+    }
 }

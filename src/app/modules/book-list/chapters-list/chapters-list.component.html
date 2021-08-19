@@ -1,11 +1,13 @@
-<a routerLink="/dashboard/chapter/create/{{this.bookid}}" class="btn btn-primary create_book"><i class="fa fa-plus"></i> New Chapter</a>
-<table class="table table-hover">
+<a routerLink="/dashboard/chapter/create/{{this.bookid}}" class="btn btn-info create_book"><i class="fa fa-plus"></i> New Chapter</a>
+<div class="cstm-tbl" style="margin:0 10px">
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table-bordered">
+
     <thead>
       <tr>
         <th scope="col">#</th>
         <th scope="col">Title</th>
         <th scope="col">Description</th>
-        <th scope="col">Book Id</th>
+        <th scope="col">Book Name</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -14,7 +16,7 @@
         <th scope="row">{{i+1}}</th>
         <td>{{chapter.title | titlecase }}</td>
         <td [innerHTML]="chapter.description"></td>
-        <td>{{chapter._id}}</td>
+        <td>{{chapter.books?.title}}</td>
        
         <td><button class="btn btn-danger" (click)= "deleteChapter(chapter._id)"><i class="fa fa-fw fa-trash"></i></button>
         <a [routerLink]="[ '/dashboard/editChapter',chapter._id]" class="btn btn-info ml-1"><i class="fa fa-fw fa-edit"></i></a></td>
@@ -22,3 +24,5 @@
       <!-- <ng-container *ngIf="!chapters?.length"><p class="text-centre mt-2">No record found !!</p></ng-container> -->
     </tbody>
   </table> 
+</div>
+<ngx-ui-loader></ngx-ui-loader>
