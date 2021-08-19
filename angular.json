@@ -37,9 +37,13 @@
               "node_modules/@coreui/icons/css/free.css",
               "node_modules/font-awesome/css/font-awesome.css",
               "node_modules/simple-line-icons/css/simple-line-icons.css",
-              "src/styles/styles.scss"
+              "src/styles/styles.scss",
+              "node_modules/datatables.net-dt/css/jquery.dataTables.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/datatables.net/js/jquery.dataTables.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -139,5 +143,8 @@
       }
     }
   },
-  "defaultProject": "admin-example"
+  "defaultProject": "admin-example",
+  "cli": {
+    "analytics": false
+  }
 }
