@@ -66,9 +66,7 @@ export class JournalsComponent implements OnInit {
       data =>{
 
         this.success = 'journal Deleted Successfully';
-        this.getJournals();
-
-        
+        window.location.reload();        
       },
       error =>{
         this.error = error.error.msg;

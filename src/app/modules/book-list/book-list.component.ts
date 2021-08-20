@@ -56,7 +56,7 @@ export class BookListComponent implements OnInit,OnDestroy {
     .subscribe(
       data =>{
         this.success = 'Book Deleted Successfully';
-        this.getBooks();
+        window.location.reload();
       },
       error =>{
         this.error = error.error.msg;

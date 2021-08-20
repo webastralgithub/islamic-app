@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit,OnDestroy {
     .subscribe(
       data =>{
         this.success = 'User Deleted Successfully';
-        this.getUser();      
+        window.location.reload();
       },
       error =>{
         this.error = error.error.msg;        

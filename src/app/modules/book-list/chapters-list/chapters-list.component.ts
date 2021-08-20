@@ -48,7 +48,7 @@ export class ChaptersListComponent implements OnInit,OnDestroy {
   deleteChapter(id:string){
     
   this.chapterService.deleteChapter(id).subscribe((res) =>{
-    this.getChapter();
+    window.location.reload();
   })
 
   }
