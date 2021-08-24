@@ -11,7 +11,7 @@ export class ChaptersService {
   constructor(private http: HttpClient) { 
     this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
   }
-  storeChapter(title:string,description:any,book_id:string){
+  storeChapter(title:string,description:any,book_id:string,books:any){
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -20,7 +20,7 @@ export class ChaptersService {
     };
     const endPoint = environment.apiURL + 'admin/chapter/create';
     console.log(title,description,book_id);
-    const response =  this.http.post<any>(endPoint, {title,description,book_id},httpOptions);
+    const response =  this.http.post<any>(endPoint, {title,description,book_id,books},httpOptions);
     return response;
   }
 
@@ -47,7 +47,9 @@ export class ChaptersService {
     const response = this.http.get<any>(endPoint,httpOptions);
     return response;
   }
-  updateChapter(data:any,id:any){
+  updateChapter(title:string,description:any,book_id:string,books:any,id:any){
+    console.log();
+    
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -55,7 +57,7 @@ export class ChaptersService {
       })
     };
     const endPoint = environment.apiURL + 'admin/chapter/update/'+id;
-    const response =  this.http.patch<any>(endPoint, data,httpOptions);
+    const response =  this.http.patch<any>(endPoint, {title,description,book_id,books},httpOptions);
     return response;
   }
 

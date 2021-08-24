@@ -16,6 +16,7 @@ export class CreateChapterComponent implements OnInit {
   imageSrc!: string;
   chapterform: FormGroup;
   books:any;
+  booksId:any;
   fileData:any;
   currentUser:any
     constructor(public fb: FormBuilder,private _Activatedroute:ActivatedRoute,private chapterService: ChaptersService,private bookService:BooksService, private http: HttpClient,private router:Router) {
@@ -69,23 +70,22 @@ export class CreateChapterComponent implements OnInit {
 
   private log(event: string, arg: any): void {
     this.events.push(`${event} ${arg || ""}`);
-    console.log(this.events);
     
   }
 
 get f(){ return this.chapterform.controls;}
     submitForm =() => {
-      
-      this.chapterService.storeChapter(this.f.title.value,this.f.description.value,this.bookid).pipe(first())
+      this.booksId = {
+        _id:this.bookid
+      }
+      this.chapterService.storeChapter(this.f.title.value,this.f.description.value,this.bookid,this.booksId).pipe(first())
       .subscribe(
         data =>{
           this.success =true;
-          this.router.navigate(['dashboard/chapter-list/'+this.bookid]); 
-          console.log(data);        
+          this.router.navigate(['dashboard/chapter-list/'+this.bookid]);  
         },
         error =>{
           this.error = error;
-          console.log(error)
         }
       );
     }

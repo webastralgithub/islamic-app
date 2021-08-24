@@ -15,6 +15,7 @@ export class EditChapterComponent implements OnInit {
 
   edit_chapter: FormGroup;
   books:any;
+  booksId:any;
   fileData:any;
   currentUser:any
     constructor(public fb: FormBuilder,private _Activatedroute:ActivatedRoute,private chapterService: ChaptersService,private bookService:BooksService, private http: HttpClient,private router:Router) {
@@ -81,11 +82,18 @@ export class EditChapterComponent implements OnInit {
 
 get f(){ return this.edit_chapter.controls;}
     updateChapter =() => {
-      this.chapterService.updateChapter(this.edit_chapter.value,this.chapterId).pipe(first())
+      this.booksId = {
+        _id:this.f.book_id.value
+      }
+      console.log(this.booksId);
+      
+      this.chapterService.updateChapter(this.f.title.value,this.f.description.value,this.f.book_id.value,this.booksId,this.chapterId).pipe(first())
       .subscribe(
         data =>{
           this.success =true;
-          this.router.navigate(['dashboard/chapter-list/'+this.chapter.book_id]);       
+          console.log(data);
+          
+          // this.router.navigate(['dashboard/chapter-list/'+this.chapter.book_id]);       
         },
         error =>{
           this.error = error;
