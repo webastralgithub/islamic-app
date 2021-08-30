@@ -14,6 +14,15 @@ import { EditChapterComponent } from '../modules/book-list/chapters-list/edit-ch
 import { ChaptersListComponent } from '../modules/book-list/chapters-list/chapters-list.component';
 import { CreateUserComponent } from '../modules/create-user/create-user.component';
 import { EditUserComponent } from '../modules/edit-user/edit-user.component';
+import { CreateBlogComponent } from '../modules/blogs/create-blog/create-blog.component';
+import { EditBlogComponent } from '../modules/blogs/edit-blog/edit-blog.component';
+import { BlogsComponent } from '../modules/blogs/blogs.component';
+import { NewsComponent } from '../modules/news/news.component';
+import { CreateNewsComponent } from '../modules/news/create-news/create-news.component';
+import { EditNewsComponent } from '../modules/news/edit-news/edit-news.component';
+import { TvComponent } from '../modules/tv/tv.component';
+import { CreateTvComponent } from '../modules/tv/create-tv/create-tv.component';
+import { EditTvComponent } from '../modules/tv/edit-tv/edit-tv.component';
 
 
 
@@ -100,6 +109,69 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: 'user/create', component: CreateUserComponent,canActivate: [AuthGuard] }
+    ]
+  },
+  { 
+    path: '', 
+    component: LayoutComponent,
+    children: [
+      { path: 'blogs', component: BlogsComponent,canActivate: [AuthGuard] }
+    ]
+  },
+  { 
+    path: '', 
+    component: LayoutComponent,
+    children: [
+      { path: 'blog/create', component: CreateBlogComponent,canActivate: [AuthGuard] }
+    ]
+  },
+  { 
+    path: '', 
+    component: LayoutComponent,
+    children: [
+      { path: 'blog/edit/:id', component: EditBlogComponent,canActivate: [AuthGuard] }
+    ]
+  },
+  { 
+    path: '', 
+    component: LayoutComponent,
+    children: [
+      { path: 'news', component: NewsComponent,canActivate: [AuthGuard] }
+    ]
+  },
+  { 
+    path: '', 
+    component: LayoutComponent,
+    children: [
+      { path: 'news/create', component: CreateNewsComponent,canActivate: [AuthGuard] }
+    ]
+  },
+  { 
+    path: '', 
+    component: LayoutComponent,
+    children: [
+      { path: 'news/edit/:id', component: EditNewsComponent,canActivate: [AuthGuard] }
+    ]
+  },
+  { 
+    path: '', 
+    component: LayoutComponent,
+    children: [
+      { path: 'tv', component: TvComponent,canActivate: [AuthGuard] }
+    ]
+  },
+  { 
+    path: '', 
+    component: LayoutComponent,
+    children: [
+      { path: 'tv/create', component: CreateTvComponent,canActivate: [AuthGuard] }
+    ]
+  },
+  { 
+    path: '', 
+    component: LayoutComponent,
+    children: [
+      { path: 'tv/edit/:id', component: EditTvComponent,canActivate: [AuthGuard] }
     ]
   },
 ];

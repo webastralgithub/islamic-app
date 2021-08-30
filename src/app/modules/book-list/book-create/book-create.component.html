@@ -1,69 +1,81 @@
-<div class="container bootstrap snippets bootdey">
-    <h1 class="text-info"><span class="glyphicon glyphicon-user"></span>Create Book</h1>
-      <hr>
-	<div class="row">
-      <!-- left column -->
-      <div class="col-md-3">
-        <img [src]="imageSrc" *ngIf="imageSrc" style="height: auto; width:100%">
-        <h6 *ngIf="imageSrc">Upload a different photo...</h6>
-      </div>
-      
-      <div class="col-md-9 personal-info">
-        <div class="col-md-8 alert alert-success alert-dismissable" *ngIf="submitted && success">
-          <a class="panel-close close" data-dismiss="alert">×</a> 
-          <i class="fa fa-book"></i>
-          Book Created Successfully.
+<div class="main-content">
+  <!-- Top navbar -->
+  <!-- Header -->
+  <div class="header pt-5 d-flex align-items-center">
+    <!-- Mask -->
+
+    <!-- Header container -->
+    <div class="container-fluid d-flex align-items-center">
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+          <h1 class="display-2 text-white">Create book</h1>
         </div>
-        <!-- <h3>Book info</h3> --> 
-        
-        <form class="form-horizontal" [formGroup]="form" (ngSubmit)="submitForm()" role="form">
-          
-            <div class="form-group">
-            <div class="col-md-12 mb-3"> 
-              <div class="choose-image p-2 imageDiv">
-              <!-- <label class="col-lg-3 control-label">Book Image</label> -->
-              <input type="file" (change)="uploadFile($event)" [ngClass]="{ 'is-invalid': f.image.errors }">
-              <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
-                <div *ngIf="f.image.errors.required">Image is required</div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mt--7">
+    <div class="row">
+      <div class="col-xl-12 order-xl-1">
+        <div class="card bg-secondary shadow">
+          <div class="card-header bg-white border-0">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <h3 class="mb-0">Book</h3>
+           </div>
+              <div class="col-4 text-right">
               </div>
             </div>
-            </div>
-            <label class="col-lg-12 control-label">Book Title</label>
-            <div class="col-lg-12">
-              <input class="form-control" type="text" placeholder="Enter Book Title" formControlName="title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" formControlName="title" ngModel [title]="true">
-              <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
-                <div *ngIf="f.title.errors.required">Title is required</div>
-            </div>
-            </div>
           </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Description:</label>
-            <div class="col-lg-12">
-                <kendo-editor
-                [value]="value"
-                (valueChange)="valueChange($event)"
-                style="height: 400px;"
-                formControlName="description"
-                [ngClass]="{ 'is-invalid': f.description.errors }"
+          <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="submitForm()">                
+              <!-- <h6 class="heading-small text-muted mb-4">News information</h6> -->
+              <div class="pl-lg-4">
+                <div class="row">
+               
+                <div class="col-lg-12">
+                  <div class="form-group focused">
+                    <label class="form-control-label" for="input-username">Title</label>
+                    <input type="text" id="input-username" formControlName="title"placeholder="Enter book title" class="form-control form-control-alternative"/>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group focused">
+                    <label class="form-control-label" for="input-username">News Description</label>
+                   
+                  <kendo-editor
+                  style="height: 400px;"
+                  formControlName="description"
+                  [ngClass]="{ 'is-invalid': f.description.errors }"
               ></kendo-editor>
             </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group focused">
+                    <label class="form-control-label" for="input-username">Author</label>
+                    <input type="text" id="input-username" formControlName="author" class="form-control form-control-alternative" placeholder="Enter author name"/>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group focused">
+                    <label class="form-control-label" for="input-username">Upload book Image</label>
+                    <img [src]="imageSrc" *ngIf="imageSrc" class="profile-image" alt="">
+                    <!-- <img src="http://112.196.64.119:8000/users/tyler-franta-iusJ25iYu1c-unsplash.jpg" class="profile-image" alt=""> -->
+                    <input type="file" id="input-username" (change)="uploadFile($event)" [ngClass]="{ 'is-invalid': f.image.errors }" class="form-control form-control-alternative">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+               
+                <button class="btn btn-default">Create book</button>
+                <div class="alert alert-success mt-2" role="alert" *ngIf="this.success == true">
+                  book created Successfully.
+                </div>
+              </div>
+              </div> 
+            </form>
           </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Author:</label>
-            <div class="col-lg-12">
-              <input class="form-control" type="text" formControlName="author" placeholder="Enter Book Author"  [ngClass]="{ 'is-invalid': submitted && f.author.errors }">
-            </div>
-            <div *ngIf="submitted && f.author.errors" class="invalid-feedback">
-              <div *ngIf="f.author.errors.required">Author is required</div>
-          </div>
-          </div>
-          <div class="col-lg-12">
-          <button class="btn btn-danger btn-block">
-            Create Book
-        </button>
+        </div>
       </div>
-        </form>
-      </div>
+    </div>
   </div>
 </div>
-<hr>

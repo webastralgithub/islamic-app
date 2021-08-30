@@ -25,6 +25,15 @@ import { CreateUserComponent } from './modules/create-user/create-user.component
 import { DataTablesModule } from "angular-datatables";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
 import { EditUserComponent } from './modules/edit-user/edit-user.component';
+import { BlogsComponent } from './modules/blogs/blogs.component';
+import { CreateBlogComponent } from './modules/blogs/create-blog/create-blog.component';
+import { EditBlogComponent } from './modules/blogs/edit-blog/edit-blog.component';
+import { NewsComponent } from './modules/news/news.component';
+import { CreateNewsComponent } from './modules/news/create-news/create-news.component';
+import { EditNewsComponent } from './modules/news/edit-news/edit-news.component';
+import { TvComponent } from './modules/tv/tv.component';
+import { CreateTvComponent } from './modules/tv/create-tv/create-tv.component';
+import { EditTvComponent } from './modules/tv/edit-tv/edit-tv.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +52,15 @@ import { EditUserComponent } from './modules/edit-user/edit-user.component';
     EditChapterComponent,
     CreateUserComponent,
     EditUserComponent,
+    BlogsComponent,
+    CreateBlogComponent,
+    EditBlogComponent,
+    NewsComponent,
+    CreateNewsComponent,
+    EditNewsComponent,
+    TvComponent,
+    CreateTvComponent,
+    EditTvComponent,
   ],
   imports: [
     BrowserModule,
