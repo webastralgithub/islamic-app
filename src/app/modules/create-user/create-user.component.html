@@ -1,15 +1,13 @@
+<div class="row back-btn mx-2">
+  <div class="col-md-6 text-left">
+    <a routerLink="/dashboard/users" class="btn btn-info mybtn create_book"><i class="fa fa-chevron-left"></i>Back</a>
+  </div>       
+</div>
 <div class="main-content">
-    <!-- Top navbar -->
-    <!-- Header -->
-    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="background-image: url(https://www.saxis.dk/blog/wp-content/uploads/2020/02/pusle-1024x768.jpeg); background-size: cover; background-position: center top;">
-      <!-- Mask -->
-      <span class="mask opacity-8"></span>
-      <!-- Header container -->
+    <div class="header pb-4 pt-5 pt-lg-8 d-flex align-items-center">
       <div class="container-fluid d-flex align-items-center">
         <div class="row">
           <div class="col-lg-12 col-md-12">
-            <h1 class="display-2 text-white">Add a new user</h1>
-            <!-- <a href="#!" class="btn btn-info">Edit profile</a> -->
           </div>
         </div>
       </div>
@@ -22,7 +20,7 @@
             <div class="card-header bg-white border-0">
               <div class="row align-items-center">
                 <div class="col-8">
-                  <h3 class="mb-0">My account</h3>
+                  <!-- <h3 class="mb-0">My account</h3> -->
              </div>
                 <div class="col-4 text-right">
                   <!-- <a href="#!" class="btn btn-sm btn-primary">Settings</a> --> 
@@ -30,17 +28,8 @@
               </div>
             </div>
             <div class="card-body">
-              <form [formGroup]="createUser" (ngSubmit)="saveUser()">                
-                <h6 class="heading-small text-muted mb-4">User information</h6>
+              <form [formGroup]="createUser" (ngSubmit)="saveUser()"> 
                 <div class="pl-lg-4">
-                  <!-- <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group focused">
-                      <label class="form-control-label" for="input-username">Upload Profile Image</label>
-                      <input type="file" id="input-username" formControlName="name" class="form-control form-control-alternative" placeholder="Name" value="{{user?.name}}"/>
-                    </div>
-                  </div>
-                </div> -->
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group focused">
@@ -83,21 +72,8 @@
                         
                       </div>
                     </div>
-                    <!-- <div class="col-lg-6">
-                      <div class="form-group focused">
-                        <label class="form-control-label" formControlName="confirmPassword" for="input-first-name">Confirm Password {{password.value}}</label>
-                        <input type="password" id="input-first-name"  class="form-control form-control-alternative" placeholder="Enter your Password" #confirmPassword/>
-                        <div *ngIf="password.value != confirmPassword.value">
-                          Confirm Password does not match
-                        </div>
-                      </div>
-                    </div> -->
                   </div>
                 </div>
-                <hr class="my-4">
-                
-                <!-- Description -->
-                <h6 class="heading-small text-muted mb-4">User Address</h6>
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label>Address</label>
@@ -106,7 +82,7 @@
                 </div>
                 
                 <div class="col-md-12">
-                  <button class="btn btn-default">Create User</button>
+                  <button class="mybtn btn btn-default">Create User</button>
                   <div class="alert alert-success mt-2" role="alert" *ngIf="this.success == true">
                     User created Successfully.
                   </div>

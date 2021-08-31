@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { AuthService } from 'src/app/services/auth.service';
 import { BlogService } from 'src/app/services/blog.service';
+
 
 @Component({
   selector: 'app-create-blog',
@@ -17,7 +19,7 @@ export class CreateBlogComponent implements OnInit {
 
   fileData:any;
   currentUser:any
-    constructor(public fb: FormBuilder,private blogService: BlogService, private http: HttpClient,private router:Router) {
+    constructor(private authService:AuthService,public fb: FormBuilder,private blogService: BlogService, private http: HttpClient,private router:Router) {
       this.saveBlog = this.fb.group({
         title: ['', Validators.required],
         description: ['', Validators.required],
@@ -34,7 +36,9 @@ export class CreateBlogComponent implements OnInit {
   public events: string[] = [];
   public value = ``;
   
-  ngOnInit() { }
+  ngOnInit() {
+    this.authService.setTitle('Create Blog');
+   }
   public valueChange(value: any): void {
     this.log("valueChange", value);
   }

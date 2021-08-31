@@ -1,6 +1,6 @@
 <br>
 <div class="cstm-tbl" style="margin:0 10px">
-<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table-bordered table-responsive">
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table-responsive">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -15,7 +15,7 @@
         <td>{{journal.title | titlecase }}</td>
         <td>{{ (journal.description.length>50)? (journal.description | slice:0:50)+'....':(journal.description) }}</td>
        
-        <td><button class="btn btn-danger" (click)= "deleteJournal(journal._id)"><i class="fa fa-fw fa-trash"></i></button></td>
+        <td><button class="btn btn-danger btn-sm" (click)= "deleteJournal(journal._id)"><i class="fa fa-fw fa-trash"></i></button></td>
       </tr>
     
     </tbody>

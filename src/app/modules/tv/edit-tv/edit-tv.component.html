@@ -1,1 +1,74 @@
-<p>edit-tv works!</p>
+<div class="row back-btn mx-2">
+  <div class="col-md-6 text-left">
+  <a routerLink="/dashboard/tv" class="btn btn-info mybtn create_book"><i class="fa fa-chevron-left"></i> Back</a>
+  </div> 
+</div>
+<div class="main-content">
+    <div class="header pt-5 d-flex align-items-center">
+      <div class="container-fluid d-flex align-items-center">
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <h1 class="display-2 text-white">Create Tv</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid mt--7">
+      <div class="row">
+        <div class="col-xl-12 order-xl-1">
+          <div class="card bg-secondary shadow">
+            <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <!-- <h3 class="mb-0">TV</h3> -->
+             </div>
+                <div class="col-4 text-right">
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <form [formGroup]="editTv" (ngSubmit)="updateTV()">                
+                <div class="pl-lg-4">
+                  <div class="row">
+                 
+                  <div class="col-lg-12">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-username">Title</label>
+                      <input type="text" id="input-username" formControlName="title" class="form-control form-control-alternative"/>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-username">Tv Description</label>
+                     
+                    <kendo-editor
+                    style="height: 400px;"
+                    formControlName="description"
+                    [ngClass]="{ 'is-invalid': f.description.errors }"
+                ></kendo-editor>
+              </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-username">Upload video</label>
+                      <!-- <img [src]="imageSrc" *ngIf="imageSrc" class="profile-image" alt=""> -->
+                       <input type="file" id="input-username" (change)="uploadFile($event)" [ngClass]="{ 'is-invalid': f.image.errors }" class="form-control form-control-alternative">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                 
+                  <button class="btn btn-default mybtn">Update Tv</button>
+                  <div class="alert alert-success mt-2" role="alert" *ngIf="this.success == true">
+                    Tv updated Successfully.
+                  </div>
+                </div>
+                </div> 
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

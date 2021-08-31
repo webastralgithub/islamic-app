@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { Subject } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 import { TvService } from 'src/app/services/tv.service';
 import { environment } from 'src/environments/environment';
 
@@ -23,11 +24,13 @@ export class TvComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private tvService: TvService,
+    private authService: AuthService,
     private ngxService: NgxUiLoaderService
    
   ) { }
  
   ngOnInit(): void {
+    this.authService.setTitle('Tv List');
     this.dtOptions = {
       pageLength: 5
     };

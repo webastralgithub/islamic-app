@@ -1,54 +1,71 @@
-<div class="container bootstrap snippets bootdey">
-	<div class="row mt-5">
-    
-      
-      <div class="col-md-12 personal-info">
-        <div class="col-md-12 alert alert-success alert-dismissable" *ngIf="submitted && success">
-          <a class="panel-close close" data-dismiss="alert">×</a> 
-          <i class="fa fa-book"></i>
-          Chapter Created Successfully.
-        </div>
-        <!-- <h3>Book info</h3> -->
-        
-        <form class="form-horizontal" [formGroup]="chapterform" (ngSubmit)="submitForm()" role="form">
-          
-          <div class="form-group">
-            <label class="col-lg-12 control-label">Chapter Title</label>
-            <div class="col-lg-12">
-              <input class="form-control" type="text" placeholder="Enter Chapter Title" formControlName="title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" formControlName="title" ngModel [title]="true">
-              <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
-                <div *ngIf="f.title.errors.required">Title is required</div>
-            </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Description:</label>
-            <div class="col-lg-12">
-                <kendo-editor
-                [value]="value"
-                (valueChange)="valueChange($event)"
-                style="height: 400px;"
-                formControlName="description"
-                [ngClass]="{ 'is-invalid': f.description.errors }"
-              ></kendo-editor>
-            </div>
-          </div>
-          <input type="hidden" value="{{bookid}}" style="display: none;" formControlName="book_id">
-          <!-- <div class="form-group">
-            <label class="col-lg-3 control-label">Select book:</label>
-            <div class="col-lg-8">
-              <select name="books" id="" class="form-control" formControlName="book_id">
-                  <option value="{{book?._id}}" *ngFor="let book of books; index as i;">{{book?.title}}</option>
-              </select>
-            </div>
-          </div> -->
-          <div class="col-lg-12 ">
-          <button class="btn btn-danger btn-block">
-            Create Chapter
-        </button>
-      </div>
-        </form>
-      </div>
+<div class="row back-btn mx-2">
+  <div class="col-md-6 text-left">
+    <a routerLink="/dashboard/blogs" class="btn btn-info mybtn create_book">Back</a>
   </div>
 </div>
-<hr>
+<div class="main-content">
+  <!-- Top navbar -->
+  <!-- Header -->
+  <div class="header pt-5 d-flex align-items-center">
+    <!-- Mask -->
+
+    <!-- Header container -->
+    <div class="container-fluid d-flex align-items-center">
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+          <h1 class="display-2 text-white">Create Blog</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mt--7">
+    <div class="row">
+      <div class="col-xl-12 order-xl-1">
+        <div class="card bg-secondary shadow">
+          <div class="card-header bg-white border-0">
+            <div class="row align-items-center">
+              <div class="col-8">
+           </div>
+              <div class="col-4 text-right">
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="chapterform" (ngSubmit)="submitForm()">                
+              <!-- <h6 class="heading-small text-muted mb-4">News information</h6> -->
+              <div class="pl-lg-4">
+                <div class="row">
+               
+                <div class="col-lg-12">
+                  <div class="form-group focused">
+                    <label class="form-control-label" for="input-username">Title</label>
+                    <input type="text" id="input-username" formControlName="title" class="form-control form-control-alternative"/>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group focused">
+                    <label class="form-control-label" for="input-username">Chapter Description</label>
+                   
+                  <kendo-editor
+                  style="height: 400px;"
+                  formControlName="description"
+                  [ngClass]="{ 'is-invalid': f.description.errors }"
+              ></kendo-editor>
+            </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+               
+                <button class="btn btn-default mybtn">Create Chapter</button>
+                <div class="alert alert-success mt-2" role="alert" *ngIf="this.success == true">
+                  Chapter created Successfully.
+                </div>
+              </div>
+              </div> 
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

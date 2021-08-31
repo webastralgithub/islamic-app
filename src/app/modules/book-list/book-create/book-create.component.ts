@@ -9,6 +9,7 @@ import { BooksService } from 'src/app/services/books.service';
 import {first} from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-book-create',
   templateUrl: './book-create.component.html',
@@ -20,7 +21,7 @@ export class BookCreateComponent implements OnInit {
 
   fileData:any;
   currentUser:any
-    constructor(public fb: FormBuilder,private bookService: BooksService, private http: HttpClient,private router:Router) {
+    constructor(public fb: FormBuilder,private bookService: BooksService,private authService: AuthService, private http: HttpClient,private router:Router) {
       this.form = this.fb.group({
         title: ['', Validators.required],
         description: ['', Validators.required],
@@ -38,7 +39,11 @@ export class BookCreateComponent implements OnInit {
   public events: string[] = [];
   public value = ``;
   
-  ngOnInit() { }
+  ngOnInit() { 
+
+    this.authService.setTitle('Create Book')
+
+  }
   public valueChange(value: any): void {
     this.log("valueChange", value);
   }

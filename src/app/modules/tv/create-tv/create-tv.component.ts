@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { AuthService } from 'src/app/services/auth.service';
 import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
@@ -17,7 +18,7 @@ export class CreateTvComponent implements OnInit {
 
   fileData:any;
   currentUser:any
-    constructor(public fb: FormBuilder,private blogService: BlogService, private http: HttpClient,private router:Router) {
+    constructor(public fb: FormBuilder,private blogService: BlogService,private authService: AuthService, private http: HttpClient,private router:Router) {
       this.saveTv = this.fb.group({
         title: ['', Validators.required],
         description: ['', Validators.required],
@@ -34,7 +35,9 @@ export class CreateTvComponent implements OnInit {
   public events: string[] = [];
   public value = ``;
   
-  ngOnInit() { }
+  ngOnInit() { 
+    this.authService.setTitle('Create Tv');
+  }
   public valueChange(value: any): void {
     this.log("valueChange", value);
   }

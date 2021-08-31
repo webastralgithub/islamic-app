@@ -1,6 +1,11 @@
-<a routerLink="/dashboard/book/create" class="btn btn-info create_book"><i class="fa fa-plus"></i> New Book</a>
+<div class="row back-btn mx-2">
+  <div class="col-md-6 text-left"></div>       
+  <div class="col-md-6 text-right">
+    <a routerLink="/dashboard/book/create" class="btn btn-info mybtn create_book"><i class="fa fa-plus"></i> New Book</a>
+  </div>
+</div> 
 <div class="cstm-tbl" style="margin:0 10px">
-  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table-bordered table-responsive">
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table-responsive">
     <thead> 
       <tr>
         <th scope="col">#</th>
@@ -19,8 +24,8 @@
         <td [innerHTML]="book.description"></td>
         <td>{{book.author}}</td>
        
-        <td><a [routerLink]="[ '/dashboard/chapter-list',book._id]" class="btn btn-info"><i class="fa fa-fw fa-eye"></i></a> <button class="btn btn-danger ml-1" (click)= "deleteBook(book._id)"><i class="fa fa-fw fa-trash"></i></button>
-        <a [routerLink]="[ '/dashboard/editBook',book._id]" class="btn btn-info ml-1"><i class="fa fa-fw fa-edit"></i></a></td>
+        <td><a [routerLink]="[ '/dashboard/chapter-list',book._id]" class="btn mybtn btn-info btn-sm"><i class="fa fa-fw fa-eye"></i></a> <button class="btn btn-sm btn-danger ml-1" (click)= "deleteBook(book._id)"><i class="fa fa-fw fa-trash"></i></button>
+        <a [routerLink]="[ '/dashboard/editBook',book._id]" class="btn btn-info mybtn btn-sm ml-1"><i class="fa fa-fw fa-edit"></i></a></td>
       </tr>
     
     </tbody>

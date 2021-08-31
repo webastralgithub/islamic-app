@@ -1,10 +1,13 @@
-<div class="main-content">
-  <!-- Top navbar -->
-  <!-- Header -->
-  <div class="header pt-5 d-flex align-items-center">
-    <!-- Mask -->
+<div class="row back-btn mx-2">
+  <div class="col-md-6 text-left">
+<a routerLink="/dashboard/news" class="btn btn-info mybtn create_book"><i class="fa fa-chevron-left"></i> Back</a>
+   
+  </div> 
 
-    <!-- Header container -->
+
+</div>
+<div class="main-content">
+  <div class="header pt-5 d-flex align-items-center">
     <div class="container-fluid d-flex align-items-center">
       <div class="row">
         <div class="col-lg-12 col-md-12">
@@ -20,7 +23,7 @@
           <div class="card-header bg-white border-0">
             <div class="row align-items-center">
               <div class="col-8">
-                <h3 class="mb-0">News</h3>
+                <!-- <h3 class="mb-0">News</h3> -->
            </div>
               <div class="col-4 text-right">
               </div>
@@ -61,7 +64,7 @@
               </div>
               <div class="col-md-12">
                
-                <button class="btn btn-default">Update News</button>
+                <button class="btn btn-default mybtn">Update News</button>
                 <div class="alert alert-success mt-2" role="alert" *ngIf="this.success == true">
                   News udpated Successfully.
                 </div>

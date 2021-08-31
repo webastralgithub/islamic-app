@@ -18,8 +18,10 @@ export class LayoutComponent implements OnInit {
   constructor(private _location: Location,public router:Router,private authService:AuthService) { }
   user!:User;
   profile_image = environment.imgURL+'users';
+  pagetitle:any;
   ngOnInit(): void {
-
+    this.authService.setTitle('Dashboard');
+    this.authService.getTitle().subscribe(appTitle => this.pagetitle = appTitle);
     this.authService.getCurrentUser()
     .pipe(first())
     .subscribe(

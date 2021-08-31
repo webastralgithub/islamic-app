@@ -32,7 +32,7 @@ export class EditUserComponent implements OnInit {
   userId:any;
   profile_image = environment.imgURL+'users';
   ngOnInit() {
-
+    this.authService.setTitle('Edit User');
     this.getCurrentUser();
     
    }

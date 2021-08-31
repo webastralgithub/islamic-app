@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { AuthService } from 'src/app/services/auth.service';
 import { BooksService } from 'src/app/services/books.service';
 import { environment } from 'src/environments/environment';
 
@@ -18,7 +19,7 @@ export class EditBookComponent implements OnInit {
   bookid!:any;
   fileData:any;
   currentUser:any
-    constructor(public fb: FormBuilder,private bookService: BooksService,private _Activatedroute:ActivatedRoute, private http: HttpClient,private router:Router) {
+    constructor(private authService:AuthService,public fb: FormBuilder,private bookService: BooksService,private _Activatedroute:ActivatedRoute, private http: HttpClient,private router:Router) {
       this.edit_book_form = this.fb.group({
         title: ['', Validators.required],
         description: ['', Validators.required],
@@ -39,7 +40,7 @@ export class EditBookComponent implements OnInit {
   ImgUrl=environment.imgURL+'books/';
   
   ngOnInit() {
-
+    this.authService.setTitle('Edit Book');
     this._Activatedroute.paramMap.subscribe(params => { 
 
           this.bookid = params.get('id');

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { News } from 'src/app/models/News';
 import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 import { NewsService } from 'src/app/services/news.service';
 import { environment } from 'src/environments/environment';
 
@@ -21,7 +22,7 @@ export class EditNewsComponent implements OnInit {
   newsId:any;
   image:any;
   success:boolean=false;
-    constructor(public fb: FormBuilder,private newsService: NewsService,private _Activatedroute:ActivatedRoute, private http: HttpClient,private router:Router) {
+    constructor(public fb: FormBuilder,private authService: AuthService,private newsService: NewsService,private _Activatedroute:ActivatedRoute, private http: HttpClient,private router:Router) {
       this.editNews = this.fb.group({
         image: ['', Validators.required],
         title: ['', Validators.required],
@@ -32,6 +33,7 @@ export class EditNewsComponent implements OnInit {
   fileData:any;
   newsImage = environment.imgURL+'news/';
     ngOnInit(): void {
+      this.authService.setTitle('Edit News');
       this._Activatedroute.paramMap.subscribe(params => { 
         this.newsService.editnews(params.get('id')).subscribe((res)=>{
           this.newsId = params.get('id');

@@ -1,6 +1,11 @@
-<a routerLink="/dashboard/chapter/create/{{this.bookid}}" class="btn btn-info create_book"><i class="fa fa-plus"></i> New Chapter</a>
+<div class="row back-btn mx-2">
+  <div class="col-md-6 text-left"></div>       
+  <div class="col-md-6 text-right">
+    <a routerLink="/dashboard/chapter/create/{{this.bookid}}" class="btn mybtn btn-info create_book"><i class="fa fa-plus"></i> New Chapter</a>
+  </div>
+</div>
 <div class="cstm-tbl" style="margin:0 10px">
-<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table-bordered">
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
 
     <thead>
       <tr>
@@ -18,8 +23,8 @@
         <td [innerHTML]="chapter.description"></td>
         <td>{{chapter.books?.title}}</td>
        
-        <td><button class="btn btn-danger" (click)= "deleteChapter(chapter._id)"><i class="fa fa-fw fa-trash"></i></button>
-        <a [routerLink]="[ '/dashboard/editChapter',chapter._id]" class="btn btn-info ml-1"><i class="fa fa-fw fa-edit"></i></a></td>
+        <td><button class="btn btn-danger btn-sm" (click)= "deleteChapter(chapter._id)"><i class="fa fa-fw fa-trash"></i></button>
+        <a [routerLink]="[ '/dashboard/editChapter',chapter._id]" class="btn-sm btn mybtn btn-info ml-1"><i class="fa fa-fw fa-edit"></i></a></td>
       </tr>
       <!-- <ng-container *ngIf="!chapters?.length"><p class="text-centre mt-2">No record found !!</p></ng-container> -->
     </tbody>

@@ -1,6 +1,15 @@
-<a routerLink="/dashboard/tv/create" class="btn btn-info create_book"><i class="fa fa-plus"></i> New tv</a>
+<div class="row back-btn mx-2">
+  <div class="col-md-6 text-left">
+  </div> 
+  <div class="col-md-6 text-right">
+  <a routerLink="/dashboard/tv/create" class="btn btn-info mybtn create_book"><i class="fa fa-plus"></i> New tv</a>
+
+  </div> 
+
+
+</div>
 <div class="cstm-tbl" style="margin:0 10px">
-  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table-bordered table-responsive">
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table-responsive">
     <thead> 
       <tr>
         <th scope="col">#</th>
@@ -17,8 +26,8 @@
         <td>{{tvitem?.title | titlecase }}</td>
         <td [innerHTML]="tvitem.description"></td>
        
-        <td><button class="btn btn-danger" (click)= "deletetv(tvitem._id)"><i class="fa fa-fw fa-trash"></i></button>
-        <a [routerLink]="[ '/dashboard/tv/edit',tvitem._id]" class="btn btn-info ml-1"><i class="fa fa-fw fa-edit"></i></a></td>
+        <td><button class="btn btn-danger btn-sm" (click)= "deletetv(tvitem._id)"><i class="fa fa-fw fa-trash"></i></button>
+        <a [routerLink]="[ '/dashboard/tv/edit',tvitem._id]" class="btn-sm btn mybtn btn-info ml-1"><i class="fa fa-fw fa-edit"></i></a></td>
       </tr>
     
     </tbody>

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { Subject } from 'rxjs';
 import { Blog } from 'src/app/models/blog';
+import { AuthService } from 'src/app/services/auth.service';
 import { BlogService } from 'src/app/services/blog.service';
 import { environment } from 'src/environments/environment';
 
@@ -25,11 +26,13 @@ export class BlogsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private blogService: BlogService,
-    private ngxService: NgxUiLoaderService
+    private ngxService: NgxUiLoaderService,
+    private authService: AuthService,
    
   ) { }
  
   ngOnInit(): void {
+    this.authService.setTitle('Blogs');
     this.dtOptions = {
       pageLength: 5
     };

@@ -1,10 +1,13 @@
-<div class="main-content">
-  <!-- Top navbar -->
-  <!-- Header -->
-  <div class="header pt-5 d-flex align-items-center">
-    <!-- Mask -->
+<div class="row back-btn mx-2">
+  <div class="col-md-6 text-left">
+  <a routerLink="/dashboard/tv" class="btn btn-info mybtn create_book"><i class="fa fa-chevron-left"></i> Back</a>
 
-    <!-- Header container -->
+  </div> 
+
+
+</div>
+<div class="main-content">
+  <div class="header pt-5 d-flex align-items-center">
     <div class="container-fluid d-flex align-items-center">
       <div class="row">
         <div class="col-lg-12 col-md-12">
@@ -20,7 +23,7 @@
           <div class="card-header bg-white border-0">
             <div class="row align-items-center">
               <div class="col-8">
-                <h3 class="mb-0">TV</h3>
+                <!-- <h3 class="mb-0">TV</h3> -->
            </div>
               <div class="col-4 text-right">
               </div>
@@ -50,15 +53,15 @@
                 </div>
                 <div class="col-md-12">
                   <div class="form-group focused">
-                    <label class="form-control-label" for="input-username">Upload Tv Image</label>
-                    <img [src]="imageSrc" *ngIf="imageSrc" class="profile-image" alt="">
+                    <label class="form-control-label" for="input-username">Upload video</label>
+                    <!-- <img [src]="imageSrc" *ngIf="imageSrc" class="profile-image" alt=""> -->
                      <input type="file" id="input-username" (change)="uploadFile($event)" [ngClass]="{ 'is-invalid': f.image.errors }" class="form-control form-control-alternative">
                   </div>
                 </div>
               </div>
               <div class="col-md-12">
                
-                <button class="btn btn-default">Create Tv</button>
+                <button class="btn btn-default mybtn">Create Tv</button>
                 <div class="alert alert-success mt-2" role="alert" *ngIf="this.success == true">
                   Tv created Successfully.
                 </div>

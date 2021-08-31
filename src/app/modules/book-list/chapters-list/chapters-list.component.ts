@@ -7,6 +7,7 @@ import { Chapter } from 'src/app/models/chapter';
 import { ChaptersService } from 'src/app/services/chapters.service';
 import { Subject } from 'rxjs';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-chapters-list',
   templateUrl: './chapters-list.component.html',
@@ -15,15 +16,15 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 export class ChaptersListComponent implements OnInit,OnDestroy {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
-  constructor(private ngxService: NgxUiLoaderService,public fb: FormBuilder,private chapterService: ChaptersService,private _Activatedroute:ActivatedRoute, private http: HttpClient,private router:Router) {
+  constructor(private ngxService: NgxUiLoaderService,private authService: AuthService,public fb: FormBuilder,private chapterService: ChaptersService,private _Activatedroute:ActivatedRoute, private http: HttpClient,private router:Router) {
    
    }
   chapters!:any;
   error!:string;
   bookid!:any;
   ngOnInit(): void {
+    this.authService.setTitle('Chapters');
     this.dtOptions = {
-      // pagingType: 'full_numbers',
       pageLength: 5
     };
     this.getChapter();

@@ -21,6 +21,7 @@ ImgUrl=environment.imgURL+'users/';
   user!: User;  
   ngOnInit() {
 
+    this.authService.setTitle('User Profile');
     this._Activatedroute.paramMap.subscribe(params => { 
 
           

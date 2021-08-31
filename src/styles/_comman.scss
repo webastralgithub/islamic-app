@@ -1296,9 +1296,10 @@ a.text-white:focus {
 
 .btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 7px 14px rgba(50, 50, 93, .1), 0 3px 6px rgba(0, 0, 0, .08);
 }
-
+.c-header .dropdown-toggle {
+  box-shadow: unset !important;
+}
 .btn:not(:last-child) {
   margin-right: .5rem;
 }
@@ -1862,4 +1863,90 @@ select:focus, select:focus-visible {
   margin-bottom: 20px;
   object-fit: cover;
   border: 1px solid #e1e4e8;
+}
+.c-sidebar {
+  color: #fff !important;
+  background: #fae9d7 !important;
+  box-shadow: 0 4px 5px grey;
+}
+.c-sidebar .c-sidebar-nav-title {
+  color: rgb(0 0 0 / 60%) !important;
+}
+.c-sidebar .c-sidebar-nav-link.c-active, .c-sidebar .c-active.c-sidebar-nav-dropdown-toggle {
+  color: #454545 !important;
+}
+.c-sidebar .c-sidebar-nav-link.c-active .c-sidebar-nav-icon, .c-sidebar .c-active.c-sidebar-nav-dropdown-toggle .c-sidebar-nav-icon {
+  color: #000;
+}
+li.c-sidebar-nav-item .c-active:hover .c-sidebar-nav-icon {
+  color: white !important;
+}
+.c-sidebar .c-sidebar-nav-link, .c-sidebar .c-sidebar-nav-dropdown-toggle {
+  color: rgb(0 0 0 / 80%) !important;
+}
+.c-sidebar .c-sidebar-nav-link .c-sidebar-nav-icon, .c-sidebar .c-sidebar-nav-dropdown-toggle .c-sidebar-nav-icon {
+  color: unset;
+}
+.cstm-tbl {
+  padding: 30px 30px;
+  background: white;
+  margin: 30px !important;
+  border-radius: 10px;
+}
+table.dataTable.no-footer {
+  border-bottom: 1px solid #d4d4d4 !important;
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: #fff !important;
+  border-color: #322f2b !important;
+  background-color: #322f2b !important;
+}
+// .create_book {
+//   display: none;
+// }
+thead {
+  background: #F6F9FC;
+}
+table.dataTable thead th, table.dataTable thead td {
+  border-bottom: 1px solid #d4d4d4 !important;
+}
+.mybtn {background:  #454545 !important;font-weight: 400 !important;}
+.mybtn:hover {
+    background:#FAE9D7 !important;color: #454545 !important;
+}
+.c-header .c-header-brand {
+  font-size: 25px;
+}
+
+.cstm-tbl .dataTables_wrapper .dataTables_paginate .paginate_button.current, .cstm-tbl .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  color: #fff !important;
+  border-color: #454545;
+  background: #454545;
+}
+.cstm-tbl .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  border: 1px solid #454545;
+  background-color: #454545;
+  background: linear-gradient(to bottom, #454545 0%, #454545 100%);
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active{
+  color: #999 !important;
+}
+@media (hover: hover), not all{
+.c-sidebar .c-sidebar-nav-link:hover, .c-sidebar .c-sidebar-nav-dropdown-toggle:hover {
+    color: #fff !important;
+    background: #454545  !important;
+}
+  }
+
+  // .paginate_button.previous:before {
+  //   content: '< ';
+  // }
+  
+  // .paginate_button.next:after {
+  //   content: ' >';
+  // }
+
+  .back-btn {
+    background: white;
+    margin: 0 !important;
 }

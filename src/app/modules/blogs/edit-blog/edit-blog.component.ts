@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { Blog } from 'src/app/models/blog';
+import { AuthService } from 'src/app/services/auth.service';
 import { BlogService } from 'src/app/services/blog.service';
 import { environment } from 'src/environments/environment';
 
@@ -20,7 +21,7 @@ export class EditBlogComponent implements OnInit {
   blogid!:any;
   fileData:any;
   currentUser:any
-    constructor(public fb: FormBuilder,private blogService: BlogService,private _Activatedroute:ActivatedRoute, private http: HttpClient,private router:Router) {
+    constructor(private authService:AuthService, public fb: FormBuilder,private blogService: BlogService,private _Activatedroute:ActivatedRoute, private http: HttpClient,private router:Router) {
       this.edit_blog_form = this.fb.group({
         title: ['', Validators.required],
         description: ['', Validators.required],
@@ -40,7 +41,7 @@ export class EditBlogComponent implements OnInit {
   ImgUrl=environment.imgURL+'blogs/';
   
   ngOnInit() {
-
+    this.authService.setTitle('Edit Blog');
     this._Activatedroute.paramMap.subscribe(params => { 
 
           this.blogid = params.get('id');

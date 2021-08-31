@@ -26,15 +26,15 @@ export class JournalsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private journalService: JournalService,
+    private authService: AuthService,
     private ngxService: NgxUiLoaderService
    
   ) {}
 
   ngOnInit(): void {
+    this.authService.setTitle('Journal List');
     this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 10,
-      processing: true,
+      pageLength: 5,
     };
     this.getJournals();
   }

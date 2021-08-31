@@ -20,7 +20,7 @@ export class CreateNewsComponent implements OnInit {
   imageSrc:any;
   image:any;
   success:boolean=false;
-    constructor(public fb: FormBuilder,private newsService: NewsService,private _Activatedroute:ActivatedRoute, private http: HttpClient,private router:Router) {
+    constructor(public fb: FormBuilder,private newsService: NewsService,private authService: AuthService,private _Activatedroute:ActivatedRoute, private http: HttpClient,private router:Router) {
       this.createNews = this.fb.group({
         image: ['', Validators.required],
         title: ['', Validators.required],
@@ -32,7 +32,7 @@ export class CreateNewsComponent implements OnInit {
   fileData:any;
   profile_image = environment.imgURL+'users';
     ngOnInit(): void {
-     
+      this.authService.setTitle('Create News');
     }
   
     get f(){ return this.createNews.controls;}

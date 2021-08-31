@@ -35,57 +35,11 @@ export class CreateUserComponent implements OnInit {
   fileData:any;
   profile_image = environment.imgURL+'users';
     ngOnInit(): void {
-     
+      this.authService.setTitle('Create User');
     }
   
     get f(){ return this.createUser.controls;}
-    // updateUser(){
-    //  console.log(this.createUser.value);
-    //  this.authService.updateAdmin(this.createUser.value).subscribe((res)=>{
-    //   console.log(res);
-    //   this.success = true;
-    //   setTimeout(()=>{
-    //     this.success = false;
-    //   },2000)
-    //   this.getCurrentUser();
-    //  })
-  
-    // }
-    // uploadFile(event:any) {
-    //   const reader = new FileReader();
-    //   const file = event.target.files[0];
-    //   reader.readAsDataURL(file);
-      
-    //   reader.onload = () => {
-    //     this.imageSrc = reader.result as string;
-      
-    //   this.createUser.patchValue({
-    //     image: file,
-    //     fileData: file,
-    //   });
-    //   this.createUser.get('image')!.updateValueAndValidity();
-      
-    //   var formData: any = new FormData();
-    //   formData.append("image", this.createUser.get('image')!.value);
-      
-     
-    //   this.authService.uploadImage(formData).pipe(first())
-    //   .subscribe(
-    //     data =>{
-    //       this.success =true;
-    //       this.getCurrentUser();
-    //       setTimeout(()=>{
-    //         this.success = false;
-    //       },2000)
-         
-    //     },
-    //     error =>{
-    //       console.log(error)
-    //     }
-    //   );
-    // }
-   
-    // }
+
     onKey(event:any,val:any){
     console.log(val);
 

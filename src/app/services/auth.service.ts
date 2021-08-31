@@ -9,6 +9,17 @@ import {environment} from '../../environments/environment';
 })
 export class AuthService {
 
+
+  private title = new BehaviorSubject<String>('');
+  private title$ = this.title.asObservable();
+
+  setTitle(title: String) {
+    this.title.next(title);
+  }
+
+  getTitle(): Observable<String> {
+    return this.title$;
+  }
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: any;
   public adminId!:string;

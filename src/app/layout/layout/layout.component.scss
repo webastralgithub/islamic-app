@@ -12,13 +12,21 @@ a.editprofile {
 a.editprofile i {
     font-size: 20px;
 }
+a.paginate_button.current {
+  background: #454545 !important;
+  color: #fff !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  color: #fff !important;
+  border-color: #454545;
+}
 .back-btn {
     background: white;
     padding: 13px 0px;
     margin: 0 !important;
     box-shadow: 0 2px 2px 0 rgb(60 75 100 / 14%),
         0 3px 1px -2px rgb(60 75 100 / 12%), 0 1px 5px 0 rgb(60 75 100 / 20%);
-    border-top: 1px solid #808080;
 }
 header {
     align-items: center;
@@ -27,10 +35,9 @@ header {
 .dropdown-menu.show a {
     color: #3c4b64;
     display: inline-block;
-    padding: 5px;
+    padding: 8px 17px;
 }
 .dropdown-menu {
-    min-width: 12rem;
     padding: 0.5rem 13px;
 }
 .img-profile {
@@ -1449,10 +1456,6 @@ a.text-white:focus {
 
 .dropdown {
   display: inline-block;
-}
-
-.dropdown-menu {
-  min-width: 12rem;
 }
 
 .dropdown-menu .dropdown-item {

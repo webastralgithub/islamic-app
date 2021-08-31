@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { AuthService } from 'src/app/services/auth.service';
 import { BooksService } from 'src/app/services/books.service';
 import { ChaptersService } from 'src/app/services/chapters.service';
 
@@ -19,7 +20,7 @@ export class CreateChapterComponent implements OnInit {
   booksId:any;
   fileData:any;
   currentUser:any
-    constructor(public fb: FormBuilder,private _Activatedroute:ActivatedRoute,private chapterService: ChaptersService,private bookService:BooksService, private http: HttpClient,private router:Router) {
+    constructor(private authService:AuthService,public fb: FormBuilder,private _Activatedroute:ActivatedRoute,private chapterService: ChaptersService,private bookService:BooksService, private http: HttpClient,private router:Router) {
       this.chapterform = this.fb.group({
         title: ['', Validators.required],
         description: ['', Validators.required],
@@ -46,7 +47,7 @@ export class CreateChapterComponent implements OnInit {
   bookid!:any;
   
   ngOnInit() {
-    
+    this.authService.setTitle('Create Chapter');
    }
   
   getBooks = () =>{

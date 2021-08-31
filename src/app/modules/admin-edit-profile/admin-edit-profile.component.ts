@@ -36,7 +36,7 @@ user!:User;
 fileData:any;
 profile_image = environment.imgURL+'users';
   ngOnInit(): void {
-   
+    this.authService.setTitle('Edit Profile');
   }
 
   getCurrentUser(){

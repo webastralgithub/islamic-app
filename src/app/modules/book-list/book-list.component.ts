@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Book } from 'src/app/models/book';
 import { Subject } from 'rxjs';
 import { NgxUiLoaderService } from "ngx-ui-loader";
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
@@ -24,11 +25,13 @@ export class BookListComponent implements OnInit,OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private bookService: BooksService,
-    private ngxService: NgxUiLoaderService
+    private ngxService: NgxUiLoaderService,
+    private authService:AuthService
    
   ) { }
  
   ngOnInit(): void {
+    this.authService.setTitle('Books');
     this.dtOptions = {
       pageLength: 5
     };
