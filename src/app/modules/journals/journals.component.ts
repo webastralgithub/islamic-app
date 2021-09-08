@@ -34,7 +34,7 @@ export class JournalsComponent implements OnInit {
   ngOnInit(): void {
     this.authService.setTitle('Journal List');
     this.dtOptions = {
-      pageLength: 5,
+      pageLength: 20,
     };
     this.getJournals();
   }

@@ -2,64 +2,66 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { Subject } from 'rxjs';
-import { News } from 'src/app/models/News';
 import { AuthService } from 'src/app/services/auth.service';
-import { NewsService } from 'src/app/services/news.service';
+import { TodoService } from 'src/app/services/todo.service';
+import { TvService } from 'src/app/services/tv.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-news',
-  templateUrl: './news.component.html',
-  styleUrls: ['./news.component.scss']
+  selector: 'app-todos',
+  templateUrl: './todos.component.html',
+  styleUrls: ['./todos.component.scss']
 })
-export class NewsComponent implements OnInit {
+export class TodosComponent implements OnInit {
 
- 
+  
   dtOptions: DataTables.Settings = {};
-  news: News[] = [];
+  tv:any;
   dtTrigger: Subject<any> = new Subject<any>();
  
   error:any;
   success:any;
-  ImgUrl=environment.imgURL+'news/';
+  ImgUrl=environment.imgURL+'tv/';
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private newsService: NewsService,
-    private ngxService: NgxUiLoaderService,
-    private authService:AuthService
+    private todoService: TodoService,
+    private authService: AuthService,
+    private ngxService: NgxUiLoaderService
    
   ) { }
  
   ngOnInit(): void {
-    this.authService.setTitle('News List');
+    this.authService.setTitle('Todos');
     this.dtOptions = {
       pageLength: 20
     };
-    this.getnewss();
+    this.gettvs();
   }
 
-  getnewss = () =>{
-    this.newsService.newsList()
+  gettvs = () =>{
+    this.todoService.todoListing()
     .subscribe(data => {
       this.ngxService.start(); 
       setTimeout(() => {
         this.ngxService.stop(); 
       }, 1000);
-      this.news = (data as any).data;
+      this.tv = (data as any).data;
+      console.log(this.tv);
+      
       this.dtTrigger.next();
     });
 
   }
-  deletenews(id:string){
-    var status = confirm("Do You want to delete this news ?");
+  deletetv(id:string){
+    var status = confirm("Do You want to delete this tv ?");
     if(!status){
       return;
     }
-    this.newsService.deletenews(id)
+    this.todoService.deleteTodo(id)
     .subscribe(
       data =>{
-        this.success = 'news Deleted Successfully';
+        this.success = 'todo Deleted Successfully';
         window.location.reload();
       },
       error =>{
@@ -74,5 +76,6 @@ export class NewsComponent implements OnInit {
     // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
   }
+
 
 }

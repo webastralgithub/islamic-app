@@ -33,7 +33,7 @@ export class BookListComponent implements OnInit,OnDestroy {
   ngOnInit(): void {
     this.authService.setTitle('Books');
     this.dtOptions = {
-      pageLength: 5
+      pageLength: 20
     };
     this.getBooks();
   }

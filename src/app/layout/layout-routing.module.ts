@@ -23,6 +23,7 @@ import { EditNewsComponent } from '../modules/news/edit-news/edit-news.component
 import { TvComponent } from '../modules/tv/tv.component';
 import { CreateTvComponent } from '../modules/tv/create-tv/create-tv.component';
 import { EditTvComponent } from '../modules/tv/edit-tv/edit-tv.component';
+import { TodosComponent } from '../modules/todos/todos.component';
 
 
 
@@ -172,6 +173,13 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: 'tv/edit/:id', component: EditTvComponent,canActivate: [AuthGuard] }
+    ]
+  },
+  { 
+    path: '', 
+    component: LayoutComponent,
+    children: [
+      { path: 'todos', component: TodosComponent,canActivate: [AuthGuard] }
     ]
   },
 ];

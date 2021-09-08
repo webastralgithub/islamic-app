@@ -34,6 +34,7 @@ import { EditNewsComponent } from './modules/news/edit-news/edit-news.component'
 import { TvComponent } from './modules/tv/tv.component';
 import { CreateTvComponent } from './modules/tv/create-tv/create-tv.component';
 import { EditTvComponent } from './modules/tv/edit-tv/edit-tv.component';
+import { TodosComponent } from './modules/todos/todos.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { EditTvComponent } from './modules/tv/edit-tv/edit-tv.component';
     TvComponent,
     CreateTvComponent,
     EditTvComponent,
+    TodosComponent,
   ],
   imports: [
     BrowserModule,

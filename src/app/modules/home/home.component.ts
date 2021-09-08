@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit,OnDestroy {
       this.authService.setTitle('User List');
     this.dtOptions = {
       // pagingType: 'full_numbers',
-      pageLength: 5,
+      pageLength: 20,
       // serverSide: true,
       // processing: true,
     };

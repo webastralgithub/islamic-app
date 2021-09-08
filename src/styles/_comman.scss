@@ -1867,7 +1867,7 @@ select:focus, select:focus-visible {
 .c-sidebar {
   color: #fff !important;
   background: #fae9d7 !important;
-  box-shadow: 0 4px 5px grey;
+  // box-shadow: 0 4px 5px grey;
 }
 .c-sidebar .c-sidebar-nav-title {
   color: rgb(0 0 0 / 60%) !important;
@@ -1890,8 +1890,8 @@ li.c-sidebar-nav-item .c-active:hover .c-sidebar-nav-icon {
 .cstm-tbl {
   padding: 30px 30px;
   background: white;
-  margin: 30px !important;
-  border-radius: 10px;
+  // margin: 30px !important;
+  // border-radius: 10px;
 }
 table.dataTable.no-footer {
   border-bottom: 1px solid #d4d4d4 !important;
@@ -1949,4 +1949,10 @@ table.dataTable thead th, table.dataTable thead td {
   .back-btn {
     background: white;
     margin: 0 !important;
+}
+.c-body{
+  background: #fff;
+}
+td{
+  font-size: 14px;
 }

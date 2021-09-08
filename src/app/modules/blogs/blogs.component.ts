@@ -34,7 +34,7 @@ export class BlogsComponent implements OnInit {
   ngOnInit(): void {
     this.authService.setTitle('Blogs');
     this.dtOptions = {
-      pageLength: 5
+      pageLength: 20
     };
     this.getBooks();
   }
