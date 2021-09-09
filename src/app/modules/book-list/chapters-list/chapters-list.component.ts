@@ -25,7 +25,7 @@ export class ChaptersListComponent implements OnInit,OnDestroy {
   ngOnInit(): void {
     this.authService.setTitle('Chapters');
     this.dtOptions = {
-      pageLength: 5
+      pageLength: 20
     };
     this.getChapter();
   }

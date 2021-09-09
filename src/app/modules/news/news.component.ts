@@ -32,7 +32,7 @@ export class NewsComponent implements OnInit {
   ) { }
  
   ngOnInit(): void {
-    this.authService.setTitle('News List');
+    this.authService.setTitle('News');
     this.dtOptions = {
       pageLength: 20
     };

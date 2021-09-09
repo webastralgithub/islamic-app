@@ -460,14 +460,14 @@ textarea.form-control {
 
 .btn-info {
   color: #fff;
-  border-color: #11cdef;
+  // border-color: #11cdef;
   background-color: #11cdef;
   box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
 }
 
 .btn-info:hover {
   color: #fff;
-  border-color: #11cdef;
+  border-color: #FAE9D7;
   background-color: #11cdef;
 }
 
@@ -1955,4 +1955,22 @@ table.dataTable thead th, table.dataTable thead td {
 }
 td{
   font-size: 14px;
+}
+.dataTables_wrapper .dataTables_paginate {
+  padding-top: 1.1rem !important;
+}
+.dataTables_wrapper .dataTables_info {
+  padding-top: 1.5em !important;
+}
+div#DataTables_Table_0_length label{
+  margin-bottom: 1.5rem !important;
+}
+.c-sidebar{
+  width: 240px;
+}
+@media (min-width: 992px){
+
+  html:not([dir=rtl]) .c-sidebar.c-sidebar-lg-show:not(.c-sidebar-right).c-sidebar-fixed ~ .c-wrapper, html:not([dir=rtl]) .c-sidebar.c-sidebar-show:not(.c-sidebar-right).c-sidebar-fixed ~ .c-wrapper{
+    margin-left: 240px;
+  }
 }

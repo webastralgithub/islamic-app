@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit,OnDestroy {
   ) {}
 
   ngOnInit(): void {
-      this.authService.setTitle('User List');
+      this.authService.setTitle('Users');
     this.dtOptions = {
       // pagingType: 'full_numbers',
       pageLength: 20,

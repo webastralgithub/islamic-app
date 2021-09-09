@@ -30,7 +30,7 @@ export class TvComponent implements OnInit {
   ) { }
  
   ngOnInit(): void {
-    this.authService.setTitle('Tv List');
+    this.authService.setTitle('Tv');
     this.dtOptions = {
       pageLength: 20
     };
