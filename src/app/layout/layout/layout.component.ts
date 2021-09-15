@@ -15,7 +15,14 @@ import { environment } from 'src/environments/environment';
 export class LayoutComponent implements OnInit {
 
   isOpen:boolean=false;
-  constructor(private _location: Location,public router:Router,private authService:AuthService) { }
+  constructor(private _location: Location,public router:Router,private authService:AuthService) {
+    // console.log(this.router.url);
+    
+    if(this.router.url === '/dashboard'){
+      this.router.navigate(['dashboard/users']);
+    }
+
+   }
   user!:User;
   profile_image = environment.imgURL+'users';
   pagetitle:any;
