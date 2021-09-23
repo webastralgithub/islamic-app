@@ -1,0 +1,33 @@
+<div class="row back-btn mx-2">
+    <div class="col-md-6 text-left"></div>       
+    <div class="col-md-6 text-right mt-5">
+      <a routerLink="/dashboard/information/create" class="btn btn-info mybtn create_info"><i class="fa fa-plus"></i> New Information</a>
+    </div>
+  </div> 
+  <div class="cstm-tbl" style="margin:0 10px">
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table-responsive">
+      <thead> 
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let info of informations; index as i;">
+          <th scope="row">{{i+1}}</th>
+          <td>{{info.title | titlecase }}</td>
+          <td [innerHTML]="(info.description.length>50)? (info.description | slice:0:50)+'....':(info.description)"></td>
+ 
+         
+          <td>
+              <!-- <a [routerLink]="[ '/dashboard/chapter-list',info._id]" class="btn mybtn btn-info btn-sm"><i class="fa fa-fw fa-eye"></i></a> -->
+             <button class="btn btn-sm btn-danger ml-1" (click)= "deleteInfo(info._id)"><i class="fa fa-fw fa-trash"></i></button>
+          <a [routerLink]="[ '/dashboard/information/edit',info._id]" class="btn btn-info mybtn btn-sm ml-1"><i class="fa fa-fw fa-edit"></i></a></td>
+        </tr>
+      
+      </tbody>
+    </table> 
+  </div>
+  <ngx-ui-loader></ngx-ui-loader>

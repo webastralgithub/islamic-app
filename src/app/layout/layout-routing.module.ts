@@ -24,6 +24,9 @@ import { TvComponent } from '../modules/tv/tv.component';
 import { CreateTvComponent } from '../modules/tv/create-tv/create-tv.component';
 import { EditTvComponent } from '../modules/tv/edit-tv/edit-tv.component';
 import { TodosComponent } from '../modules/todos/todos.component';
+import { InformationComponent } from '../modules/information/information.component';
+import { CreateInfoComponent } from '../modules/information/create-info/create-info.component';
+import { EditInfoComponent } from '../modules/information/edit-info/edit-info.component';
 
 
 
@@ -180,6 +183,27 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: 'todos', component: TodosComponent,canActivate: [AuthGuard] }
+    ]
+  },
+  { 
+    path: '', 
+    component: LayoutComponent,
+    children: [
+      { path: 'informations', component: InformationComponent,canActivate: [AuthGuard] }
+    ]
+  },
+  { 
+    path: '', 
+    component: LayoutComponent,
+    children: [
+      { path: 'information/create', component: CreateInfoComponent,canActivate: [AuthGuard] }
+    ]
+  },
+  { 
+    path: '', 
+    component: LayoutComponent,
+    children: [
+      { path: 'information/edit/:id', component: EditInfoComponent,canActivate: [AuthGuard] }
     ]
   },
 ];
