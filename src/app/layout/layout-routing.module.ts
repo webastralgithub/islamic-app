@@ -35,14 +35,14 @@ const routes: Routes = [
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'users', loadChildren: () => import('./../modules/home/home.module').then(m => m.HomeModule ),canActivate: [AuthGuard] }
+      { path: 'users',data: {title: 'Admin | Users'}, loadChildren: () => import('./../modules/home/home.module').then(m => m.HomeModule ),canActivate: [AuthGuard] }
     ]
   },
   { 
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'userProfile/:id', component: UserProfileComponent,data: {routeName: "profile"},canActivate: [AuthGuard] }
+      { path: 'userProfile/:id', component: UserProfileComponent,canActivate: [AuthGuard] }
     ]
   },
   { 
@@ -56,126 +56,126 @@ const routes: Routes = [
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'journals', component: JournalsComponent,canActivate: [AuthGuard] }
+      { path: 'journals', component: JournalsComponent,data: {title: 'Admin | Journals'},canActivate: [AuthGuard] }
     ]
   },
   { 
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'books', component: BookListComponent,canActivate: [AuthGuard] }
+      { path: 'books', component: BookListComponent,data: {title: 'Admin | Books'},canActivate: [AuthGuard] }
     ]
   },
   { 
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'editBook/:id', component: EditBookComponent,canActivate: [AuthGuard] }
+      { path: 'editBook/:id', component: EditBookComponent,data: {title: 'Admin | Edit Book'},canActivate: [AuthGuard] }
     ]
   },
   { 
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'book/create', component: BookCreateComponent,canActivate: [AuthGuard] }
+      { path: 'book/create', component: BookCreateComponent,data: {title: 'Admin | Create Book'},canActivate: [AuthGuard] }
     ]
   },
   { 
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'admin/edit-profile', component: AdminEditProfileComponent,canActivate: [AuthGuard] }
+      { path: 'admin/edit-profile', component: AdminEditProfileComponent,data: {title: 'Admin | Edit Profile'},canActivate: [AuthGuard] }
     ]
   },
   { 
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'chapter/create/:id', component:CreateChapterComponent,canActivate: [AuthGuard] }
+      { path: 'chapter/create/:id', component:CreateChapterComponent,data: {title: 'Admin | Create Chapter'},canActivate: [AuthGuard] }
     ]
   },
   { 
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'editChapter/:id', component: EditChapterComponent,canActivate: [AuthGuard] }
+      { path: 'editChapter/:id', component: EditChapterComponent,data: {title: 'Admin | Edit Chapter'},canActivate: [AuthGuard] }
     ]
   },
   { 
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'chapter-list/:id', component: ChaptersListComponent,canActivate: [AuthGuard] }
+      { path: 'chapter-list/:id', component: ChaptersListComponent,data: {title: 'Admin |Chapters'},canActivate: [AuthGuard] }
     ]
   },
   { 
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'user/create', component: CreateUserComponent,canActivate: [AuthGuard] }
+      { path: 'user/create', component: CreateUserComponent,data: {title: 'Admin | Create User'},canActivate: [AuthGuard] }
     ]
   },
   { 
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'blogs', component: BlogsComponent,canActivate: [AuthGuard] }
+      { path: 'blogs', component: BlogsComponent,data: {title: 'Admin | Blogs'},canActivate: [AuthGuard] }
     ]
   },
   { 
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'blog/create', component: CreateBlogComponent,canActivate: [AuthGuard] }
+      { path: 'blog/create', component: CreateBlogComponent,data: {title: 'Admin | Create Blog'},canActivate: [AuthGuard] }
     ]
   },
   { 
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'blog/edit/:id', component: EditBlogComponent,canActivate: [AuthGuard] }
+      { path: 'blog/edit/:id', component: EditBlogComponent,data: {title: 'Admin | Edit Blog'},canActivate: [AuthGuard] }
     ]
   },
   { 
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'news', component: NewsComponent,canActivate: [AuthGuard] }
+      { path: 'news', component: NewsComponent,data: {title: 'Admin | News'},canActivate: [AuthGuard] }
     ]
   },
   { 
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'news/create', component: CreateNewsComponent,canActivate: [AuthGuard] }
+      { path: 'news/create', component: CreateNewsComponent,data: {title: 'Admin | Create News'},canActivate: [AuthGuard] }
     ]
   },
   { 
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'news/edit/:id', component: EditNewsComponent,canActivate: [AuthGuard] }
+      { path: 'news/edit/:id', component: EditNewsComponent,data: {title: 'Admin | Edit News'},canActivate: [AuthGuard] }
     ]
   },
   { 
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'tv', component: TvComponent,canActivate: [AuthGuard] }
+      { path: 'tv', component: TvComponent,data: {title: 'Admin | Tv'},canActivate: [AuthGuard] }
     ]
   },
   { 
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'tv/create', component: CreateTvComponent,canActivate: [AuthGuard] }
+      { path: 'tv/create', component: CreateTvComponent,data: {title: 'Admin | Create Tv'},canActivate: [AuthGuard] }
     ]
   },
   { 
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'tv/edit/:id', component: EditTvComponent,canActivate: [AuthGuard] }
+      { path: 'tv/edit/:id', component: EditTvComponent,data: {title: 'Admin | Edit Tv'},canActivate: [AuthGuard] }
     ]
   },
   { 
@@ -189,21 +189,21 @@ const routes: Routes = [
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'informations', component: InformationComponent,canActivate: [AuthGuard] }
+      { path: 'informations', component: InformationComponent,data: {title: 'Admin | Information'},canActivate: [AuthGuard] }
     ]
   },
   { 
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'information/create', component: CreateInfoComponent,canActivate: [AuthGuard] }
+      { path: 'information/create', component: CreateInfoComponent,data: {title: 'Admin | Create Information'},canActivate: [AuthGuard] }
     ]
   },
   { 
     path: '', 
     component: LayoutComponent,
     children: [
-      { path: 'information/edit/:id', component: EditInfoComponent,canActivate: [AuthGuard] }
+      { path: 'information/edit/:id', component: EditInfoComponent,data: {title: 'Admin | Edit Information'},canActivate: [AuthGuard] }
     ]
   },
 ];
