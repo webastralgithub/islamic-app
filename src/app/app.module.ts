@@ -38,6 +38,7 @@ import { TodosComponent } from './modules/todos/todos.component';
 import { InformationComponent } from './modules/information/information.component';
 import { CreateInfoComponent } from './modules/information/create-info/create-info.component';
 import { EditInfoComponent } from './modules/information/edit-info/edit-info.component';
+import { NafsComponent } from './modules/nafs/nafs.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { EditInfoComponent } from './modules/information/edit-info/edit-info.com
     InformationComponent,
     CreateInfoComponent,
     EditInfoComponent,
+    NafsComponent,
   ],
   imports: [
     BrowserModule,

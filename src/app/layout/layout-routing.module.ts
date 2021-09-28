@@ -27,6 +27,7 @@ import { TodosComponent } from '../modules/todos/todos.component';
 import { InformationComponent } from '../modules/information/information.component';
 import { CreateInfoComponent } from '../modules/information/create-info/create-info.component';
 import { EditInfoComponent } from '../modules/information/edit-info/edit-info.component';
+import { NafsComponent } from '../modules/nafs/nafs.component';
 
 
 
@@ -204,6 +205,13 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: 'information/edit/:id', component: EditInfoComponent,data: {title: 'Admin | Edit Information'},canActivate: [AuthGuard] }
+    ]
+  },
+  { 
+    path: '', 
+    component: LayoutComponent,
+    children: [
+      { path: 'nafs/view/:id', component: NafsComponent,data: {title: 'Admin | View Nafs'},canActivate: [AuthGuard] }
     ]
   },
 ];
