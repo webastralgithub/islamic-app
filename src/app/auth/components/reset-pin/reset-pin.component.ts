@@ -47,7 +47,7 @@ export class ResetPinComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    localStorage.removeItem('currentUser');   
     this.resetform = this.formBuilder.group({
       new_pin: ['', Validators.required],
       confirm_pin: ['', Validators.required]

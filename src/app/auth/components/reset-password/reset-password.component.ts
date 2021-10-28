@@ -39,7 +39,7 @@ export class ResetPasswordComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-
+    localStorage.removeItem('currentUser');   
     this.resetform = this.formBuilder.group({
       new_password: ['', Validators.required],
       confirm_password: ['', Validators.required]
